@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+header{
+      width: 100%;
+      color: black;
+      position: fixed;
+      display: flex;
+      justify-content: center;
+}
+.chhotaheading{
+  font-size: medium;
+}
+.hindi{
+  text-align: center;
+}
