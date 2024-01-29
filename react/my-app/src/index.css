@@ -33,18 +33,6 @@ header{
 .logo{
   size: 1vw;
 }
-.bg {
-  /* The image used */
-  background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.collegedunia.com%2Fpublic%2Fcollege_data%2Fimages%2FappImage%2F_11111plok-001.jpg&tbnid=skZdl0dQtgUfhM&vet=12ahUKEwij2pzGyP-DAxVlTmwGHRFBBMAQMygBegQIARBv..i&imgrefurl=https%3A%2F%2Fcollegedunia.com%2Funiversity%2F55783-indian-institute-of-information-technology-iiitm-imphal&docid=JQETu_WhR7yFpM&w=1186&h=518&q=iiit%20manipur&ved=2ahUKEwij2pzGyP-DAxVlTmwGHRFBBMAQMygBegQIARBv');
-
-  /* Full height */
-  height: 100%; 
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }   
   @media (max-width: 825px) {
     header{
       font-size: 1.4vw;
