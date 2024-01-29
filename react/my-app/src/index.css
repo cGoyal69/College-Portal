@@ -1,4 +1,10 @@
+html{
+  height: 100%;
+  width: 100%;
+}
 body {
+  height: 100%;
+  width: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -6,12 +12,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 header{
+    background-color: rgba(151, 151, 151, 0.5);
       width: 100%;
       color: black;
       position: fixed;
@@ -41,3 +47,31 @@ header{
       width: 22vw;
     }
   }
+.Login-Box{
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  top: 30%;
+  left: 12.5%;
+  height: 40%;
+  width: 75%;
+  background-color: rgba(255, 255, 255, 0.86);
+  border-radius: 10px;
+  align-items: center;
+}
+.wrapper{
+  /*justify-content: center;*/
+  height: fit-content;
+  margin-right: 3%;
+
+}
+.firstpage{
+  height: 100%;
+  width: 100%;
+  background-image: url('https://images.collegedunia.com/public/college_data/images/appImage/_11111plok-001.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+html:root{
+  background-color: rgb(235, 235, 235);
+}
