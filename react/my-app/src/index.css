@@ -1,3 +1,6 @@
+html:root{
+  background-color: rgb(235, 235, 235);
+}
 html{
   height: 100%;
   width: 100%;
@@ -6,12 +9,26 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+/*Login WebPage*/
+.firstpage{
+  height: 100%;
+  width: 100%;
+  background-image: url('https://images.collegedunia.com/public/college_data/images/appImage/_11111plok-001.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  object-fit: fill;
+}
+
+
+/*Login Navbar*/
 header{
     background-color: rgba(151, 151, 151, 0.5);
       width: 100%;
@@ -31,57 +48,54 @@ header{
 .english{
   text-align: center;
 }
-.logo{
-  size: 1vw;
-}
-  @media (max-width: 825px) {
+
+@media (max-width: 825px) {
     header{
       font-size: 1.4vw;
     }
     .imgLogo{
       width: 22vw;
     }
-  }
+}
+
+
+/*Login Window*/
 .Login-Box{
   display: flex;
   flex-direction: row;
   position: relative;
   top: 30%;
   left: 12.5%;
-  height: 40%;
+  height: 50%;
   width: 75%;
   background-color: rgba(255, 255, 255, 0.86);
   border-radius: 10px;
   align-items: center;
   justify-content: center;
+  overflow: scroll;
 }
+    /*form System*/
 .wrapper{
   /*justify-content: center;*/
+  padding-top: 20px;
   height: fit-content;
   margin-right: 3%;
+  border-left: 2px solid black;
+  padding-left: 10px;
 
 }
-.firstpage{
-  height: 100%;
-  width: 100%;
-  background-image: url('https://images.collegedunia.com/public/college_data/images/appImage/_11111plok-001.jpg');
-  background-repeat: no-repeat;
-  background-size:cover;
-  object-fit: fill;
+input{
+  width: 90%;
 }
-html:root{
-  background-color: rgb(235, 235, 235);
-}
+    /*written instruction*/
 .instruction{
   width: 60%;
 }
-.log{
-  height: 100%;
-  width: 35%;
-}
-
-input{
-  width: 90%;
+.icon{
+  float: right;
+  position: relative;
+  top: -20px;
+  left: 5px;
 }
 @media (max-width: 850px) {
   .Login-Box{
@@ -93,8 +107,25 @@ input{
     align-items: center;
   }
   .instruction{
-    margin-top: 50px;
+    margin-top: 40px;
     font-size: smaller;
+  }
+  .wrapper{
+    border-left: none;
+  }
+  @media (max-height: 630px) {
+    .instruction{
+      margin-top: 40px;
+      padding-bottom: 28%;
+      font-size: smaller;
+    }
+  }
+  @media (max-height: 520px) {
+    .instruction{
+      margin-top: 40px;
+      padding-bottom: 50%;
+      font-size: smaller;
+    }
   }
 }
 @media (max-width: 510px) {
@@ -103,7 +134,24 @@ input{
   }
 }
 
-/* CSS */
+@media (max-height: 550px) {
+    header{
+      font-size: 2.2vh;
+    }
+    .imgLogo{
+      height: 20vh;
+      width: 20vh;
+    }
+}
+@media (max-height: 500px) {
+  header{
+    font-size: 1.4vh;
+  }
+  .imgLogo{
+    height: 15vh;
+  }
+}
+/* Login Button Copied*/
 .button-74 {
   background-color: #fbeee0;
   border: 2px solid #422800;
@@ -122,13 +170,9 @@ input{
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 70px;
-}
-
-.button-74:hover {
+}.button-74:hover {
   background-color: #fff;
-}
-
-.button-74:active {
+}.button-74:active {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
