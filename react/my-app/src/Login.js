@@ -11,15 +11,15 @@ export const Login = (props) => {
   }
   return (
     <div className="wrapper">
-      <form action='' onSubmit={HandleSubmit}>
+      <form className="form" action='' onSubmit={HandleSubmit}>
         
         <div className="userinput">
-          <label htmlFor="username">username</label>
-          <input value={user} onChange={(e)=>setUser(e.target.value)} type="text" placeholder="Username" required/><FaUser className="icon" />  
+          <label className="use" htmlFor="username">username</label>
+          <input className="user" value={user} onChange={(e)=>setUser(e.target.value)} type="text" placeholder="Username" required/><FaUser className="icon" />  
         </div>
         <div className="passinput">
-          <label htmlFor="password ">password</label>
-          <input value={pass} onChange={(e)=>setPass(e.target.value)} type="text" placeholder="password" required/><FaLock className="icon"/>
+          <label className="pas" htmlFor="password ">password</label>
+          <input className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="text" placeholder="password" required/><FaLock className="icon"/>
         </div>
         <button>Login</button>
       </form>

@@ -49,7 +49,7 @@ header{
   }
 .Login-Box{
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   position: relative;
   top: 30%;
   left: 12.5%;
@@ -74,4 +74,18 @@ header{
 }
 html:root{
   background-color: rgb(235, 235, 235);
+}
+.instruction{
+  height: 100%;
+  padding-top: 1%;
+  padding-left: 1%;
+  width: 70%;
+}
+.log{
+  height: 100%;
+  width: 35%;
+}
+.form{
+  padding-left: 10%;
+  margin-top: 50%;
 }

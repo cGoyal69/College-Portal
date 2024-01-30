@@ -14,7 +14,13 @@ export default function Header() {
       </h1>
     </header>
     <div className='Login-Box'>
-      <Login />
+      <div className='instruction'>
+        Instructions<br/> 
+        <ol>
+          <li>Please login with your username Provided to you by your institution</li>
+          </ol>
+          </div>
+      <div className='log'><Login /></div>
     </div>
     </div>
   );
