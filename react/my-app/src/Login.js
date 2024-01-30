@@ -25,11 +25,11 @@ export const Login = (props) => {
           <div className="userinput">
             <label className="use" htmlFor="username">username</label>
             
-            <input className="user" value={user} onChange={(e)=>setUser(e.target.value)} type="text" placeholder="Username" required/><FaUser className="icon" /> 
+            <input className="user" value={user} onChange={(e)=>setUser(e.target.value)} type="text" placeholder="Username" required/>
           </div>
           <div className="passinput">
             <label className="pas" htmlFor="password ">password</label>
-            <input className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="text" placeholder="password" required/><FaLock className="icon"/>
+            <input className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="text" placeholder="password" required/>
           </div>
           <button className="button-74" role="button">Login</button>
           
