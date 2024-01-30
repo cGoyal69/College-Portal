@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaUser, FaLock } from "react-icons/fa";
 
 export const Login = (props) => {
   const[user,setUser] = useState('');
