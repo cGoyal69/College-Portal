@@ -13,15 +13,7 @@ export default function Header() {
         <div className="chhotaheading">(An Institute of National Importance by Act of Parliament, Govt. of India)</div>
       </h1>
     </header>
-    <div className='Login-Box'>
-      <div className='instruction'>
-        Instructions<br/> 
-        <ol>
-          <li>Please login with your username Provided to you by your institution</li>
-          </ol>
-          </div>
-      <div className='log'><Login /></div>
-    </div>
+    <Login/>
     </div>
   );
 }

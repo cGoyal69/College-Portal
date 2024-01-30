@@ -12,10 +12,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 header{
     background-color: rgba(151, 151, 151, 0.5);
       width: 100%;
@@ -28,7 +24,6 @@ header{
 .chhotaheading{
   font-size: 65%;
   text-align: center;
-
 }
 .hindi{
   text-align: center;
@@ -58,6 +53,7 @@ header{
   background-color: rgba(255, 255, 255, 0.86);
   border-radius: 10px;
   align-items: center;
+  justify-content: center;
 }
 .wrapper{
   /*justify-content: center;*/
@@ -71,21 +67,68 @@ header{
   background-image: url('https://images.collegedunia.com/public/college_data/images/appImage/_11111plok-001.jpg');
   background-repeat: no-repeat;
   background-size:cover;
+  object-fit: fill;
 }
 html:root{
   background-color: rgb(235, 235, 235);
 }
 .instruction{
-  height: 100%;
-  padding-top: 1%;
-  padding-left: 1%;
-  width: 70%;
+  width: 60%;
 }
 .log{
   height: 100%;
   width: 35%;
 }
-.form{
-  padding-left: 10%;
-  margin-top: 50%;
+
+input{
+  width: 90%;
+}
+@media (max-width: 850px) {
+  .Login-Box{
+    flex-direction: column-reverse;
+    height: 60%;
+    width: 80%;
+    overflow: scroll;
+    justify-content: center;
+    align-items: center;
+  }
+  .instruction{
+    margin-top: 50px;
+    font-size: smaller;
+  }
+}
+@media (max-width: 510px) {
+  .instruction{
+    width: 90%;
+  }
+}
+
+/* CSS */
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 10px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0 8px;
+  line-height: 25px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 70px;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
 }
