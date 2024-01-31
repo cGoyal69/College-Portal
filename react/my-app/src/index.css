@@ -30,6 +30,9 @@ header{
     justify-content: center;
     font-size: 75%;
 }
+.headerch{
+  position: relative;
+}
 .chhotaheading{
   font-size: 65%;
   text-align: center;
@@ -177,12 +180,9 @@ input{
 .studentpage{
   width: 100%;
   height: 100%;
-  display: flex;
 }
 .sidenav{
   display: flex;
   flex-direction: column;
-  height: 100%;
-  position: fixed;
   width: 20%;
 }

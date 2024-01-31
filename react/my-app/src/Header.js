@@ -1,6 +1,6 @@
-export function Header(){
+export function Header({theme}){
     return(
-    <header>
+    <header className={theme}>
       <div className="logo">
         <a href="http://www.iiitmanipur.ac.in/"><img className="imgLogo" src="iiitm.png" alt="logo"/></a>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Header } from "./Header";
 
 export const Login = (props) => {
   //Variables for username and password and submit function
@@ -16,6 +17,7 @@ export const Login = (props) => {
   //the html elemnt to show
   return (
     <div className="loginpage">
+      <Header/>
       <div className='Login-Box'>
         <div className='instruction'>
           Instructions<br/> 

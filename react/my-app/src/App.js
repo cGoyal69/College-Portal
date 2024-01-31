@@ -6,7 +6,6 @@ import{Header} from './Header'
 export default function App() {
   return(
     <div className='Basepage'>
-      <Header />
       <Router>
         <Routes>
           <Route path="/" element={<Login/>}/>
