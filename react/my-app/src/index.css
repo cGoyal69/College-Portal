@@ -16,7 +16,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 /*Login WebPage*/
 .firstpage{
   height: 100%;
@@ -27,16 +26,15 @@ body {
   object-fit: fill;
 }
 
-
 /*Login Navbar*/
 header{
-    background-color: rgba(151, 151, 151, 0.5);
-      width: 100%;
-      color: black;
-      position: fixed;
-      display: flex;
-      justify-content: center;
-      font-size: 75%;
+    background-color: rgba(150, 150, 150, 0.5);
+    width: 100%;
+    color: black;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    font-size: 75%;
 }
 .chhotaheading{
   font-size: 65%;
@@ -76,12 +74,11 @@ header{
 }
     /*form System*/
 .wrapper{
-  /*justify-content: center;*/
   padding-top: 20px;
   height: fit-content;
   margin-right: 3%;
   border-left: 2px solid black;
-  padding-left: 10px;
+  padding-left: 25px;
 
 }
 input{
@@ -89,7 +86,7 @@ input{
 }
     /*written instruction*/
 .instruction{
-  width: 60%;
+  width: 55%;
 }
 .icon{
   float: right;
@@ -170,6 +167,7 @@ input{
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 70px;
+  margin-top: 10px;
 }.button-74:hover {
   background-color: #fff;
 }.button-74:active {
