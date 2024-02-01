@@ -1,7 +1,5 @@
-.nav {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+::-webkit-scrollbar{
+  display: none;
 }
 html:root{
   background-color: rgb(235, 235, 235);
@@ -185,6 +183,7 @@ input{
 .studentpage{
   width: 100%;
   height: 100%;
+  overflow-y: hidden;
 }
 .sidenav{
   display: flex;
@@ -196,20 +195,27 @@ input{
   font-size: 2rem;
   background: none;
 }
+.nav {
+  box-sizing: border-box;
+  width: fit-content;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 .nav-menu{
   background-color: rgb(195, 195, 195);
   width: 250px;
   height: 100vh;
   display: flex;
-  justify-content: cneter;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: -100%;
   transition: 850ms;
 }
 .nav-menu.active{
-  left: 0;
-  transition: 350ms;
+  left: 0px;
+  transition: 500ms;
 }
 .nav-text{
   display: flex;
@@ -237,16 +243,14 @@ input{
 .nav-menu-items {
   width: 100%;
 }
-
 .navbar-toggle {
-  background-color: rgb(187, 187, 187);
+  background-color:  rgb(195, 195, 195);
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-
-span {
+Link > span {
   margin-left: 16px;
 }
