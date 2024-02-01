@@ -10,6 +10,7 @@ export const Login = (props) => {
       e.preventDefault();
       console.log(user)
   };
+  //Routing to student page function
   const navigate = useNavigate();
   const toStudent = () => {
       navigate('/student');
