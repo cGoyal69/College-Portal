@@ -12,43 +12,43 @@ const studentSidebarData = [
         title: 'Home',
         path: '/',
         icon: <AiIcons.AiFillHome />,
-        cName: 'nav-text'
+        cName: 'nav-text home'
     },
     {
         title : 'Student Profile',
         path: '/student/profile',
         icon:  <FaIcons.FaUserCircle/> , 
-        cName: 'profile'
+        cName: 'nav-text profile'
     },
     {
         title: 'Course registered',
         path: '/',
         icon:  <IoIcons.IoMdCard />,
-        cName: 'courses'
+        cName: 'nav-text courses'
     },
     {
         title: 'Attendence',
         path: '/',
         icon:  <IoIcons.IoMdCheckboxOutline />,
-        cName: 'attendance'
+        cName: 'nav-text attendance'
     },
     {
         title: 'Grades',
         path: '/',
         icon:  <GrIcons.GrScorecard />,
-        cName: 'grades'
+        cName: 'nav-text grades'
     },
     {
-        title: 'leave form',
+        title: 'Leave Form',
         path: '/',
         icon:  <FaIcons.FaWpforms />,
-        cName: 'leaveform'
+        cName: 'nav-text leaveform'
     },
     {
         title: 'Complaints',
         path: '/',
         icon:   <GoIcons.GoReport/>,
-        cName:  'complaint'
+        cName:  'nav-text complaint'
     },
 ]
 
@@ -57,32 +57,32 @@ export function Navbar(){
     const showSidebar = () => setSidebar(!sidebar)
     return(
         <div className='nav'>
-        <IconContext.Provider value={{color:'#fff'}}>
-        <div className='navbar'>
-            <Link to='#' className='menu-bars'>
-                <FaIcons.FaBars onClick={showSidebar} />
-            </Link>
-        </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className='nav-menu-items' onClick={showSidebar} >
-                <li className='navbar-toggle' >
-                    <Link to='#' className='menu-bars' >
-                        <AiIcons.AiOutlineClose/>
+            <IconContext.Provider value={{color:'black'}}>
+                <div className='navbar'>
+                    <Link to='#' className='menu-bars'>
+                        <FaIcons.FaBars onClick={showSidebar} className='three'/>
                     </Link>
-                </li>
-                {studentSidebarData.map((item,index)=>{
-                    return (
-                        <li key={index}   className={item.cName}>
-                            <Link to={item.path}>
-                                {item.icon}
-                                <span>{item.title}</span>
+                </div>
+                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    <ul className='nav-menu-items' onClick={showSidebar} >
+                        <li className='navbar-toggle' >
+                            <Link to='#' className='menu-bars' >
+                                <AiIcons.AiOutlineClose/>
                             </Link>
                         </li>
-                    )
-                })}
-            </ul>
-        </nav>
-        </IconContext.Provider>
+                        {studentSidebarData.map((item,index)=>{
+                            return (
+                                <li key={index}   className={item.cName}>
+                                    <Link to={item.path}>
+                                        {item.icon}
+                                        <span>{item.title}</span>
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </nav>
+            </IconContext.Provider>
         </div>
     );
 }
