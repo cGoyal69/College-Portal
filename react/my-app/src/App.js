@@ -11,11 +11,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Login/>}/>
           <Route path="/student" element={<Student/>}/>
-<<<<<<< HEAD
           <Route path='/student/profile' element={<Profile /> } />
-=======
-          <Route path='/student/profile' element={ <Profile /> } />
->>>>>>> 041822a63b0803a333d807521f82a240831c6628
         </Routes>
       </Router>
     </div>

@@ -248,7 +248,6 @@ input{
 .nav-text a:hover {
   background-color: #1a83ff;
 }
-<<<<<<< HEAD
 
 .nav-menu-items {
   width: 100%;
@@ -264,12 +263,9 @@ input{
   height: 80px;
   display: flex;
   justify-content: flex-start;
-=======
-.navbar-toggle {
   background-color:  rgb(195, 195, 195);
   list-style: none;
   width: fit-content;
->>>>>>> 041822a63b0803a333d807521f82a240831c6628
   align-items: center;
 }
 a > svg{
