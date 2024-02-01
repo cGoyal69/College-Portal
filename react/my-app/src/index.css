@@ -237,10 +237,14 @@ input{
 .nav-menu-items {
   width: 100%;
 }
-
+.nav{
+  width:80px;
+  height: 100%;
+  background-color: rgb(187, 187, 187);
+}
 .navbar-toggle {
   background-color: rgb(187, 187, 187);
-  width: 100%;
+  width: 80px;
   height: 80px;
   display: flex;
   justify-content: flex-start;
