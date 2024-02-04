@@ -3,6 +3,7 @@
 }
 html:root{
   background-color: rgb(235, 235, 235);
+  overflow-y: hidden;
 }
 html{
   height: 100%;
@@ -183,7 +184,7 @@ input{
 .studentpage{
   width: 100%;
   height: 100%;
-  overflow-y: hidden;
+  overflow: scroll;
 }
 .sidenav{
   display: flex;

@@ -6,10 +6,11 @@ export default class Profile extends Component {
     render()
     {
         return(
-            <>
-            <Header theme="headerch"/>
-            <Navbar/>
-            </>
+            <div className="bache">
+                <Header theme="headerch"/>
+                <Navbar/>
+                
+            </div>
         );
     }
 }

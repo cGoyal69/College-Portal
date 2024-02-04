@@ -10,7 +10,7 @@ import * as GoIcons from "react-icons/go";
 const studentSidebarData = [
     {
         title: 'Home',
-        path: '/',
+        path: '/student',
         icon: <AiIcons.AiFillHome />,
         cName: 'nav-text home'
     },
