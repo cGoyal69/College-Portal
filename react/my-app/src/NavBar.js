@@ -51,31 +51,54 @@ const studentSidebarData = [
         cName:  'nav-text complaint'
     },
 ]
+export function Navbar({name}){
 
-export function Navbar(){
-    const [sidebar,setSidebar] = useState(false)
-    const showSidebar = () => setSidebar(!sidebar)
+    const [sidebar,setSidebar] = useState(true)
+    const showSidebar = () => {setSidebar(!sidebar)}
+    
+    const openNav=()=>{
+        showSidebar();
+        const a = document.getElementsByClassName('nav-menu')[0]
+        const b = document.getElementsByClassName(name)[0]
+        const c = document.getElementsByClassName('three')[0]
+        const displaytimer = () => {
+            c.style.display = "none";
+        }
+        a.style.left='0%';
+        b.style.left='0%';
+        c.style.opacity = '0';
+        setTimeout(displaytimer, 1000);
+    }
+    const closeNav=()=>{
+        showSidebar();
+        const a = document.getElementsByClassName('nav-menu')[0];
+        const b = document.getElementsByClassName(name)[0];
+        const c = document.getElementsByClassName('three')[0];
+        const displaytimer2 = () => {
+            c.style.display = "block";
+        }
+        a.style.left='-13.5%';
+        b.style.left='-13.5%';
+        c.style.opacity='1';
+        setTimeout(displaytimer2, 1000);
+    }
     return(
-        <div className='nav'>
+        <div className='nav-menu'>
             <IconContext.Provider value={{color:'black'}}>
-                <div className='navbar'>
-                    <Link to='#' className='menu-bars'>
-                        <FaIcons.FaBars onClick={showSidebar} className='three'/>
-                    </Link>
-                </div>
-                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                    <ul className='nav-menu-items' onClick={showSidebar} >
+                <nav>
+                    <ul className='nav-menu-items'  >
                         <li className='navbar-toggle' >
                             <Link to='#' className='menu-bars' >
-                                <AiIcons.AiOutlineClose/>
+                                <AiIcons.AiOutlineClose onClick={closeNav} className='four'/>
+                                <FaIcons.FaBars onClick={openNav} className='three'/>
                             </Link>
                         </li>
                         {studentSidebarData.map((item,index)=>{
                             return (
                                 <li key={index}   className={item.cName}>
                                     <Link to={item.path}>
-                                        {item.icon}
-                                        <span>{item.title}</span>
+                                        <span className='navtitle'>{item.title}</span>
+                                        <span className='nav-icon'>{item.icon}</span>
                                     </Link>
                                 </li>
                             );
