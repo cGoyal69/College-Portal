@@ -1,5 +1,5 @@
-::-webkit-scrollbar{
-  display: none;
+*::-webkit-scrollbar{
+  display: hidden;
 }
 html:root{
   background-color: rgb(235, 235, 235);
@@ -194,14 +194,14 @@ input{
 .menu-bars{
   font-size: 2rem;
   border: none !important;
-  background: none;
+  
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding-right: 0px;
 }
 .nav-menu{
-  background-color: rgba(195, 195, 195);
+  background-color: rgba(150, 150, 150, 0.5);
   padding: 15px;
   height: 100vh;
   display: flex;
@@ -248,7 +248,7 @@ input{
   height: 80px;
   display: flex;
   justify-content: flex-start;
-  background-color:  rgb(195, 195, 195);
+  
   list-style: none;
   align-items: center;
 }
@@ -258,16 +258,24 @@ a > svg{
 .navtitle{
   width:180px;
 }
+.bache{
+  height: 100%;
+}
 .studentcontent{
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 .instructionstudent, .studprofile{
   flex-basis: 1;
-  flex-grow: 2;
+  
   width: 100%;
   position: relative;
   left: -13.5%;
   transition: 850ms;
   padding: 20px;
+}
+.studprofile{
+  height: 80%;
+  overflow: scroll;
 }
