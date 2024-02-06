@@ -1,4 +1,7 @@
-*::-webkit-scrollbar{
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar{
   display: hidden;
 }
 html:root{
@@ -184,7 +187,7 @@ input{
 .studentpage{
   width: 100%;
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
 }
 .sidenav{
   display: flex;
