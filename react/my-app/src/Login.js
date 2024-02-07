@@ -33,11 +33,20 @@ export const Login = (props) => {
           <form className="form" action='' onSubmit={HandleSubmit}>
             <div className="userinput">
               <label className="use" htmlFor="username">username</label>
-              <input className="user" value={user} onChange={(e)=>setUser(e.target.value)} type="text" placeholder="Username" required/>
+              <input 
+                className="user" 
+                id="user" 
+                name="pass" 
+                value={user} 
+                onChange={(e)=>setUser(e.target.value)} 
+                type="text" 
+                placeholder="Username" 
+                required
+              />
             </div>
             <div className="passinput">
               <label className="pas" htmlFor="password ">password</label>
-              <input className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="password" required/>
+              <input id="pass" name="pass" className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="password" required/>
             </div>
             <button className="button" type="button">Login</button>
           </form>

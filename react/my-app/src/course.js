@@ -12,15 +12,19 @@ export default class Course extends Component {
                     <Navbar name = 'studprofile'/>
                     <div className='studprofile'>
                         <div>
-                            <h2>Course Registered</h2>
+                            <h2>Course Registered</h2> 
                             <table>
-                                <tr>
+                                <thead>
+                                    <tr>
                                     <th>Course Code</th>
-                                    <th>Course  Name</th>
+                                    <th>Course Name</th>
                                     <th>Credits</th>
-                                    <th>Instructor</th>
-                                </tr>
-                            </table>        
+                                    <th>Course Faculty</th>
+                                    <th>Academic Session</th>
+                                    <th>Term</th>
+                                    </tr>
+                                </thead>
+                            </table>     
                         </div>
                     </div>
                 </div>

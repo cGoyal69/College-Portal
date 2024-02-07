@@ -89,16 +89,16 @@ export function Navbar({name}){
                     <ul className='nav-menu-items'  >
                         <li className='navbar-toggle' >
                             <Link to='#' className='menu-bars' >
-                                <AiIcons.AiOutlineClose onClick={closeNav} className='four'/>
-                                <FaIcons.FaBars onClick={openNav} className='three'/>
+                                <AiIcons.AiOutlineClose onClick={closeNav} className='four' id='four'/>
+                                <FaIcons.FaBars onClick={openNav} className='three' id='three'/>
                             </Link>
                         </li>
                         {studentSidebarData.map((item,index)=>{
                             return (
                                 <li key={index}   className={item.cName}>
                                     <Link to={item.path}>
-                                        <span className='navtitle'>{item.title}</span>
-                                        <span className='nav-icon'>{item.icon}</span>
+                                        <span className='navtitle' id='navtitle'>{item.title}</span>
+                                        <span className='nav-icon' id='nav-icon'>{item.icon}</span>
                                     </Link>
                                 </li>
                             );
