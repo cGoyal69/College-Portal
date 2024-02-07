@@ -142,8 +142,8 @@ export default class Profile extends Component {
                             <form>
                                 {genprofiledata.map((props,value) => {
                                     return(
-                                        <li key={value}   className={props.cName}>
-                                         <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
+                                        <>
+                                        <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
                                         <input 
                                                 value={props.value}
                                                 readOnly={props.readonly}
@@ -152,7 +152,8 @@ export default class Profile extends Component {
                                                 name={props.value}
                                                 type={props.type}
                                             />
-                                        </li>
+                                            <br />
+                                        </>
                                     );
                                 })}
                             </form>
@@ -163,7 +164,7 @@ export default class Profile extends Component {
                             <form>
                                 {addressprofiledata.map((props,value) => {
                                     return(
-                                        <li key={value}   className={props.cName}>
+                                        <>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
                                         <input 
                                                 value={props.value}
@@ -173,7 +174,8 @@ export default class Profile extends Component {
                                                 name={props.value}
                                                 type={props.type}
                                             />
-                                        </li>
+                                            <br />
+                                        </>
                                     );
                                 })}
                             </form>
@@ -184,7 +186,7 @@ export default class Profile extends Component {
                             <form>
                                 {gaurdianprofiledata.map((props,value) => {
                                     return(
-                                        <li key={value}   className={props.cName}>
+                                        <>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
                                         <input 
                                                 value={props.value}
@@ -194,7 +196,8 @@ export default class Profile extends Component {
                                                 name={props.value}
                                                 type={props.type}
                                             />
-                                        </li>
+                                            <br />
+                                        </>
                                     );
                                 })}
                             </form>
@@ -205,7 +208,7 @@ export default class Profile extends Component {
                             <form>
                                 {healthprofiledata.map((props,value) => {
                                     return(
-                                        <li key={value}   className={props.cName}>
+                                        <>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
                                         <input 
                                                 value={props.value}
@@ -215,7 +218,8 @@ export default class Profile extends Component {
                                                 name={props.value}
                                                 type={props.type}
                                             />
-                                        </li>
+                                            <br />
+                                        </>
                                     );
                                 })}
                             </form>
