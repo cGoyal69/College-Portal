@@ -22,7 +22,7 @@ const studentSidebarData = [
     },
     {
         title: 'Course registered',
-        path: '/',
+        path: '/student/course',
         icon:  <IoIcons.IoMdCard />,
         cName: 'nav-text courses'
     },
