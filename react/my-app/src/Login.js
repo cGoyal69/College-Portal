@@ -36,7 +36,7 @@ export const Login = (props) => {
               <input 
                 className="user" 
                 id="user" 
-                name="pass" 
+                name="user" 
                 value={user} 
                 onChange={(e)=>setUser(e.target.value)} 
                 type="text" 

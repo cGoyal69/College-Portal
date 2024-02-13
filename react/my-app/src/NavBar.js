@@ -28,13 +28,13 @@ const studentSidebarData = [
     },
     {
         title: 'Attendence',
-        path: '/',
+        path: '/student/attendence',
         icon:  <IoIcons.IoMdCheckboxOutline />,
         cName: 'nav-text attendance'
     },
     {
         title: 'Grades',
-        path: '/',
+        path: '/student/grades',
         icon:  <GrIcons.GrScorecard />,
         cName: 'nav-text grades'
     },

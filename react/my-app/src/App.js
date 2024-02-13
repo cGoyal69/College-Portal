@@ -3,6 +3,8 @@ import Student from './student'
 import{Login} from './Login'
 import Profile from './profile';
 import Course from "./course";
+import Attendence from "./attendence";
+import Grades from "./grades";
  
 
 export default function App() {
@@ -14,6 +16,8 @@ export default function App() {
           <Route path="/student" element={<Student/>}/>
           <Route path='/student/profile' element={<Profile />}/>
           <Route path='/student/course' element={<Course />}/>
+          <Route path='/student/attendence' element={<Attendence />}/>
+          <Route path='/student/grades' element={<Grades />}/>
         </Routes>
       </Router>
     </div>
