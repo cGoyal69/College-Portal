@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+/* eslint-disable no-unreachable */
 
 const studentSidebarData = [
     {
@@ -11,10 +11,18 @@ const studentSidebarData = [
         path: '/student/profile',
         cName: 'nav-text profile'
     }
-]
+];
 
 export function DropdownMenu(){
-    const[dropdown,setDropdown] = useState(null)
-
-    
+    return(
+        <div className="dropdown">
+            <div>
+                {studentSidebarData.map((item, index) => {
+                    return(
+                    <span className={item.cName}>{item.title}</span>
+                    );
+                })}
+            </div>
+        </div>
+    );
 }
