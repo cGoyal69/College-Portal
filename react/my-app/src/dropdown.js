@@ -1,4 +1,4 @@
-/* eslint-disable no-unreachable */
+
 
 const studentSidebarData = [
     {
@@ -16,13 +16,7 @@ const studentSidebarData = [
 export function DropdownMenu(){
     return(
         <div className="dropdown">
-            <div>
-                {studentSidebarData.map((item, index) => {
-                    return(
-                    <span className={item.cName}>{item.title}</span>
-                    );
-                })}
-            </div>
+            <h5>hello</h5>
         </div>
     );
 }

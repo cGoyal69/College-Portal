@@ -19,7 +19,7 @@ export default function App() {
           <Route path='/student/course' element={<Course />}/>
           <Route path='/student/attendence' element={<Attendence />}/>
           <Route path='/student/grades' element={<Grades />}/>
-          
+          <Route path="/student/complaint" element={<Complaint/>}/>
         </Routes>
       </Router>
     </div>
