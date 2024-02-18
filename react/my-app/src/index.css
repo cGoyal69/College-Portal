@@ -292,3 +292,11 @@ a > svg{
     left: -18vw;
   }
 }
+.dropdown{
+  display: flex;
+  flex-direction: column;
+}
+#objective{
+  width: 50vw;
+  height: 10vw;
+}
