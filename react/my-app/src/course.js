@@ -13,7 +13,7 @@ export default class Course extends Component {
                     <div className='studprofile'>
                         <div>
                             <h2>Course Registered</h2> 
-                            <table>
+                            <table className="tbl">
                                 <thead>
                                     <tr>
                                     <th>Course Code</th>

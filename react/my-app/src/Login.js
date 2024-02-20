@@ -12,7 +12,7 @@ export const Login = (props) => {
   };
   //Routing to student page function
   const navigate = useNavigate();
-  const toStudent = () => {
+  const toStudent = (value) => {
       navigate('/student');
   };
   //the html elemnt to show
@@ -48,7 +48,7 @@ export const Login = (props) => {
               <label className="pas" htmlFor="password ">password</label>
               <input id="pass" name="pass" className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="password" required/>
             </div>
-            <button className="button" type="button">Login</button>
+            <button className="button" type="button" onClick={toStudent}>Login</button>
           </form>
         </div>
         <button className="button" type="button" onClick={toStudent}>Student</button>

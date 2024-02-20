@@ -300,3 +300,24 @@ a > svg{
   width: 50vw;
   height: 10vw;
 }
+.bo,.ad,.ga,.he{
+  font-size: 17px;
+  padding: 5px;
+}
+.input{
+  border: none;
+  outline: none;
+  background: transparent;
+  width: max-content;
+  font-weight: bold;
+}
+.tbl{
+  border-collapse: separate;
+  border-spacing: 50px 0;
+}
+.tbl > th{
+  padding: 10px;
+}
+.tbl > td{
+  padding: 10px;
+}

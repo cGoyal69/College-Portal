@@ -139,16 +139,15 @@ export default class Profile extends Component {
                     <div className='studprofile'>
                         <div className="generalinfo">
                             <h2>General Infromation</h2>
-                            <form>
+                            <form className="geninfo">
                                 {genprofiledata.map((props,value) => {
                                     return(
                                         <div key={value} className={props.cName}>
                                         <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
-                                        <input 
-                                                value={props.value}
+                                        :
+                                        <input
                                                 readOnly={props.readonly}
-                                                className={props.cName}
-                                                placeholder={props.value}
+                                                className='input'
                                                 name={props.value}
                                                 type={props.type}
                                                 id={props.value}
@@ -167,11 +166,12 @@ export default class Profile extends Component {
                                     return(
                                         <div key={value} className={props.cName}>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
+                                         :
                                         <input 
-                                                value={props.value}
+                                              
                                                 readOnly={props.readonly}
-                                                className={props.cName}
-                                                placeholder={props.value}
+                                                className='input'
+                                     
                                                 name={props.value}
                                                 type={props.type}
                                                 id={props.value}
@@ -190,11 +190,12 @@ export default class Profile extends Component {
                                     return(
                                         <div key={value} className={props.cName}>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
+                                         :
                                         <input 
-                                                value={props.value}
+                                        
                                                 readOnly={props.readonly}
-                                                className={props.cName}
-                                                placeholder={props.value}
+                                                className='input'
+                                         
                                                 name={props.value}
                                                 type={props.type}
                                                 id={props.value}
@@ -213,11 +214,12 @@ export default class Profile extends Component {
                                     return(
                                         <div key={value} className={props.cName}>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
+                                         :
                                         <input 
-                                                value={props.value}
+                                        
                                                 readOnly={props.readonly}
-                                                className={props.cName}
-                                                placeholder={props.value}
+                                                className='input'
+                                        
                                                 name={props.value}
                                                 type={props.type}
                                                 id={props.value}
