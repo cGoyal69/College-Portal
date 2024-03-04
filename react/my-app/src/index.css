@@ -184,7 +184,7 @@ input{
 
 
 /*Student Page*/
-.studentpage{
+.studentpage , .teacherpage{
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -264,12 +264,12 @@ a > svg{
 .bache{
   height: 100%;
 }
-.studentcontent{
+.studentcontent, .teachercontent{
   display: flex;
   flex-direction: row;
   height: 100%;
 }
-.instructionstudent, .studprofile{
+.instructionstudent, .studprofile, .instructionteacher{
   flex-basis: 1;
   
   width: 100%;

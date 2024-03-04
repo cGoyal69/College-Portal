@@ -6,6 +6,7 @@ import Course from "./course";
 import Attendence from "./attendence";
 import Grades from "./grades";
 import Complaint from "./complaint";
+import Teacher from "./teacher";
  
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Login/>}/>
           <Route path="/student" element={<Student/>}/>
+          <Route path="/teacher" element={<Teacher/>}/>
           <Route path='/student/profile' element={<Profile />}/>
           <Route path='/student/course' element={<Course />}/>
           <Route path='/student/attendence' element={<Attendence />}/>

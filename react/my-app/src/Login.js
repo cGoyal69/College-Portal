@@ -15,6 +15,9 @@ export const Login = (props) => {
   const toStudent = (value) => {
       navigate('/student');
   };
+  const toTeacher = (value) => {
+    navigate('/teacher');
+};
   //the html elemnt to show
   return (
     <div className="loginpage">
@@ -52,6 +55,7 @@ export const Login = (props) => {
           </form>
         </div>
         <button className="button" type="button" onClick={toStudent}>Student</button>
+        <button className="button" type="button" onClick={toTeacher}>Teacher</button>
       </div>
     </div>
   );
