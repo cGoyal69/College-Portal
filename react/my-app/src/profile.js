@@ -88,13 +88,13 @@ const gaurdianprofiledata = [
         type: 'text', 
     },
     {
-        value: 'Mother Form',
+        value: 'Mother Name',
         readonly: true,
         cName: 'ga momform',
         type: 'text', 
     },
     {
-        value: 'Contact Number',
+        value: 'Contact',
         readonly: true,
         cName: 'ga ganumform',
         type: 'number', 
