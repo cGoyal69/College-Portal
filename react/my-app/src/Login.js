@@ -1,14 +1,27 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "./Header";
+import axios from "axios";
 
 export const Login = (props) => {
   //Variables for username and password and submit function
   const[user,setUser] = useState('');
   const[pass,setPass] = useState('');
-  const HandleSubmit= (e) =>{
+  
+  async function HandleSubmit(e){
       e.preventDefault();
-      console.log(user)
+
+      try
+      {
+        await axios.post("http://localhost:2004/",{
+          user,pass
+        })        
+      }
+      catch(e)
+      {
+        console.log(e);
+      }
+      
   };
   //Routing to student page function
   const navigate = useNavigate();
@@ -33,7 +46,7 @@ export const Login = (props) => {
           </ol>
         </div>
         <div className="wrapper">
-          <form className="form" action='' onSubmit={HandleSubmit}>
+          <form className="form" action="POST" onSubmit={HandleSubmit}>
             <div className="userinput">
               <label className="use" htmlFor="username">username</label>
               <input 
