@@ -4,24 +4,32 @@ import { Header } from "./Header";
 import axios from "axios";
 
 export const Login = (props) => {
-  //Variables for username and password and submit function
-  const[user,setUser] = useState('');
-  const[pass,setPass] = useState('');
-  
-  async function HandleSubmit(e){
-      e.preventDefault();
+  const history = useNavigate(); // Use the same instance for navigation
 
-      try
-      {
-        await axios.post("http://localhost:2004/",{
-          user,pass
-        })        
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:2004/", {
+        user,
+        pass,
+      });
+
+      if (response.data === "exist") {
+        history("/student");
+      } else if (response.data === "notexist") {
+        alert("Please enter a valid username provided by the institution");
+      } else {
+        // Handle other potential responses
+        console.error("Unexpected response from server:", response.data);
       }
-      catch(e)
-      {
-        console.log(e);
-      }
-      
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Failed to log in. Please try again."); // User-friendly error message
+    }
   };
   //Routing to student page function
   const navigate = useNavigate();
@@ -46,7 +54,7 @@ export const Login = (props) => {
           </ol>
         </div>
         <div className="wrapper">
-          <form className="form" action="POST" onSubmit={HandleSubmit}>
+          <form className="form" method="POST" onSubmit={HandleSubmit}>
             <div className="userinput">
               <label className="use" htmlFor="username">username</label>
               <input 
@@ -64,7 +72,7 @@ export const Login = (props) => {
               <label className="pas" htmlFor="password ">password</label>
               <input id="pass" name="pass" className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="password" required/>
             </div>
-            <button className="button" type="button" onClick={toStudent}>Login</button>
+            <button className="button" type="button" onClick={HandleSubmit}>Login</button>
           </form>
         </div>
         <button className="button" type="button" onClick={toStudent}>Student</button>
