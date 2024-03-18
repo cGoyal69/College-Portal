@@ -134,7 +134,7 @@ export default class Profile extends Component {
         return(
             <div className="bache">
                 <Header theme="headerch"/>
-                <div className='studentcontent'>
+                <div className='studentcontent' >
                     <Navbar name = 'studprofile'/>
                     <div className='studprofile'>
                         <div className="generalinfo">
