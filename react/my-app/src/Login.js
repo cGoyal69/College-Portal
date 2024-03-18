@@ -9,6 +9,7 @@ export const Login = (props) => {
   const HandleSubmit= (e) =>{
       e.preventDefault();
       console.log(user)
+      
   };
   //Routing to student page function
   const navigate = useNavigate();
