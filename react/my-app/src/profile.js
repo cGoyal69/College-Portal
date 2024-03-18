@@ -88,13 +88,13 @@ const gaurdianprofiledata = [
         type: 'text', 
     },
     {
-        value: 'Mother Name',
+        value: 'Mother Form',
         readonly: true,
         cName: 'ga momform',
         type: 'text', 
     },
     {
-        value: 'Contact',
+        value: 'Contact Number',
         readonly: true,
         cName: 'ga ganumform',
         type: 'number', 
@@ -134,20 +134,21 @@ export default class Profile extends Component {
         return(
             <div className="bache">
                 <Header theme="headerch"/>
-                <div className='studentcontent' >
+                <div className='studentcontent'>
                     <Navbar name = 'studprofile'/>
                     <div className='studprofile'>
                         <div className="generalinfo">
                             <h2>General Infromation</h2>
-                            <form className="geninfo">
+                            <form>
                                 {genprofiledata.map((props,value) => {
                                     return(
                                         <div key={value} className={props.cName}>
                                         <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
-                                        :
-                                        <input
+                                        <input 
+                                                value={props.value}
                                                 readOnly={props.readonly}
-                                                className='input'
+                                                className={props.cName}
+                                                placeholder={props.value}
                                                 name={props.value}
                                                 type={props.type}
                                                 id={props.value}
@@ -166,12 +167,11 @@ export default class Profile extends Component {
                                     return(
                                         <div key={value} className={props.cName}>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
-                                         :
                                         <input 
-                                              
+                                                value={props.value}
                                                 readOnly={props.readonly}
-                                                className='input'
-                                     
+                                                className={props.cName}
+                                                placeholder={props.value}
                                                 name={props.value}
                                                 type={props.type}
                                                 id={props.value}
@@ -190,12 +190,11 @@ export default class Profile extends Component {
                                     return(
                                         <div key={value} className={props.cName}>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
-                                         :
                                         <input 
-                                        
+                                                value={props.value}
                                                 readOnly={props.readonly}
-                                                className='input'
-                                         
+                                                className={props.cName}
+                                                placeholder={props.value}
                                                 name={props.value}
                                                 type={props.type}
                                                 id={props.value}
@@ -214,12 +213,11 @@ export default class Profile extends Component {
                                     return(
                                         <div key={value} className={props.cName}>
                                          <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
-                                         :
                                         <input 
-                                        
+                                                value={props.value}
                                                 readOnly={props.readonly}
-                                                className='input'
-                                        
+                                                className={props.cName}
+                                                placeholder={props.value}
                                                 name={props.value}
                                                 type={props.type}
                                                 id={props.value}

@@ -46,7 +46,7 @@ const studentSidebarData = [
     },
     {
         title: 'Complaints',
-        path: '/student/complaint',
+        path: '/',
         icon:   <GoIcons.GoReport/>,
         cName:  'nav-text complaint'
     },

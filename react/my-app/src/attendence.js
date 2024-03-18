@@ -13,7 +13,7 @@ export default class Attendence extends Component {
                     <div className='studprofile'>
                         <div>
                             <h2>Attendence</h2> 
-                            <table className="tbl">
+                            <table>
                                 <thead>
                                     <tr>
                                     <th>Course Code</th>

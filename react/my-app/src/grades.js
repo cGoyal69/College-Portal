@@ -13,9 +13,9 @@ export default class Grades extends Component {
                     <div className='studprofile'>
                         <div>
                             <h2>Grades</h2> 
-                            <table className="tbl">
+                            <table>
                                 <thead>
-                                    <tr >
+                                    <tr>
                                     <th>Course Code</th>
                                     <th>Course Name</th>
                                     <th>Assesment 1</th>
