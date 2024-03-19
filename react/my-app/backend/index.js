@@ -1,9 +1,17 @@
 const express = require('express')
 const app = express()
 app.use(express.json());
-const momgoose = require("mongoose");
+const mongoose = require("mongoose");
 
+const mongoUrl ="mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority&appName=myAtlasClusterEDU";
 
+mongoose
+.connect(mongoUrl,{
+})
+.then(()=>{
+  console.log("connected to database");
+})
+.catch((e) =>console.log(e));
 
 app.post("/", async(req, res) => {
   console.log(req.body);
