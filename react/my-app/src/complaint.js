@@ -16,7 +16,7 @@ export default class Complaint extends Component {
                         <br/>
                         <br/>
                         <form>
-                            <textarea id="objective" name="objective" rows="5" cols="50">Please Elaborate </textarea>
+                            <textarea id="objective" name="objective" rows="5" cols="50" placeholder="Please Elaborate your complaint here"></textarea>
                         </form>
                     </div>
                 </div>          
