@@ -77,8 +77,8 @@ export function Navbar({name}){
         const displaytimer2 = () => {
             c.style.display = "block";
         }
-        a.style.left='-13.5%';
-        b.style.left='-13.5%';
+        a.style.left='';
+        b.style.left='-14%';
         c.style.opacity='1';
         setTimeout(displaytimer2, 1000);
     }

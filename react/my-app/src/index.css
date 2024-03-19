@@ -274,7 +274,7 @@ a > svg{
   
   width: 100%;
   position: relative;
-  left: -13.5%;
+
   transition: 850ms;
   padding: 20px;
 }
@@ -282,12 +282,22 @@ a > svg{
   height: 80%;
   overflow: scroll;
 }
+@media (max-width: 1600px) {
+  .nav-menu{
+    left: -13vw;
+  }
+}
 @media (max-width: 1300px) {
   .nav-menu{
     left: -15vw;
   }
 }
 @media (max-width: 1150px) {
+  .nav-menu{
+    left: -17vw;
+  }
+}
+@media (max-width: 1050px) {
   .nav-menu{
     left: -18vw;
   }
