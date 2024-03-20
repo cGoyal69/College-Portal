@@ -19,6 +19,14 @@
           "meta[name=theme-color]"
         ]
       }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "height: fit-content"
+        ]
+      }
     ]
   }
 }
