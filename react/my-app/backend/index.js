@@ -18,7 +18,7 @@ app.post("/", async(req, res) => {
   const {data} = req.body;
 
 try{
-  if(data == "HKD"){
+  if(data === "HKD"){
    res.send({status:"ok"}) 
   }
   else{
