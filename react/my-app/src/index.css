@@ -82,6 +82,7 @@ header{
   border-radius: 10px;
   align-items: center;
   justify-content: center;
+  scrollbar-width: none;
   overflow: scroll;
 }
     /*form System*/
@@ -271,19 +272,31 @@ a > svg{
 }
 .instructionstudent, .studprofile, .instructionteacher{
   flex-basis: 1;
-  left:-13.5%;
+  
   width: 100%;
   position: relative;
   transition: 850ms;
   padding: 20px;
+  margin-left: 25px;
+  scrollbar-width: none;
 }
 .studprofile{
   height: 80%;
   overflow: scroll;
 }
-@media (max-width: 1600px) {
+@media (max-width: 1800px) {
   .nav-menu{
-    left: -13vw;
+    left: -11.5vw;
+  }
+}
+@media (max-width: 1660px) {
+  .nav-menu{
+    left: -12vw;
+  }
+}
+@media (max-width: 1450px) {
+  .nav-menu{
+    left: -14vw;
   }
 }
 @media (max-width: 1300px) {
@@ -313,12 +326,17 @@ a > svg{
   font-size: 17px;
   padding: 5px;
 }
+.bo label {
+  width: 200px;
+}
 .input{
   border: none;
   outline: none;
   background: transparent;
   width: max-content;
   font-weight: bold;
+  padding: 5px;
+  font-size: 17px;
 }
 .tbl{
   border-collapse: separate;
@@ -329,4 +347,11 @@ a > svg{
 }
 .tbl > td{
   padding: 10px;
+}
+.phydform{
+  padding-bottom: 50px;
+}
+.bo{
+  display: flex;
+  justify-content: space-between;
 }
