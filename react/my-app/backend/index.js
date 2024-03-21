@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 app.use(express.json());
 const mongoose = require("mongoose");
+const { userInfo } = require('os');
 
 const mongoUrl ="mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority&appName=myAtlasClusterEDU";
 mongoose
@@ -12,12 +13,13 @@ mongoose
 })
 .catch((e) =>console.log(e));
 
+require('./logindetails')
+const user = mongoose.model('LoginInfo')
 app.post("/", async(req, res) => {
-  console.log(req.body);
-  const {data} = req.body;
-
+  const {username} = req.body
+  await user.findOne({username});
 try{
-  if(data === "HKD"){
+  if(username === user.username){
    res.send({status:"ok"}) 
   }
   else{
