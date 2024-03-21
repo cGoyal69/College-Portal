@@ -272,7 +272,7 @@ a > svg{
 }
 .instructionstudent, .studprofile, .instructionteacher{
   flex-basis: 1;
-  left: -13.5%;
+  
   width: 100%;
   position: relative;
   transition: 850ms;

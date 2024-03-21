@@ -6,9 +6,10 @@ export const Login = (props) => {
   //Variables for username and password and submit function
   const[user,setUser] = useState('');
   const[pass,setPass] = useState('');
+
   const HandleSubmit= (e) =>{
       e.preventDefault();
-      console.log(user)
+      console.log(user, pass);
   };
   //Routing to student page function
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ export const Login = (props) => {
               <label className="pas" htmlFor="password ">password</label>
               <input id="pass" name="pass" className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="password" required/>
             </div>
-            <button className="button" type="button" onClick={toStudent}>Login</button>
+            <button className="button" type="button" onClick={HandleSubmit}>Login</button>
           </form>
         </div>
         <button className="button" type="button" onClick={toStudent}>Student</button>
