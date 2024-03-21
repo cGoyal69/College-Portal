@@ -4,6 +4,7 @@ app.use(express.json());
 const mongoose = require("mongoose");
 
 const mongoUrl ="mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority&appName=myAtlasClusterEDU";
+//hello world
 mongoose
 .connect(mongoUrl,{
 })
