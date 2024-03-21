@@ -1,35 +1,39 @@
 const express = require('express')
 const app = express()
 app.use(express.json());
-const mongoose = require("mongoose");
-const { userInfo } = require('os');
 
-const mongoUrl ="mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority&appName=myAtlasClusterEDU";
-mongoose
-.connect(mongoUrl,{
-})
-.then(()=>{
-  console.log("connected to database");
-})
-.catch((e) =>console.log(e));
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority";
 
-require('./logindetails')
-const user = mongoose.model('LoginInfo')
-app.post("/", async(req, res) => {
-  const {username} = req.body
-  await user.findOne({username});
-try{
-  if(username === user.username){
-   res.send({status:"ok"}) 
-  }
-  else{
-    res.send({status:"User Not Found"})
-  }
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri);
+
+async function run(user) { 
+	let a = "Error";
+	try {
+		// Connect the client to the server	(optional starting in v4.7)
+		await client.connect();
+		const database = client.db('studentdata');
+		const studentdata = database.collection('studentdata');
+		const query = { username: user}
+		a = await studentdata.findOne(query);
+		//console.log(a, "hello")
+		// Send a ping to confirm a successful connection
+		console.log("Pinged your deployment. You successfully connected to MongoDB!");
+	} finally {
+		await client.close();
+	}
+    return a;
+	
 }
-catch(error){
-  res.send({status:"error"})
+let studentDataset;
+console.log("after Run")
+async function hello() {
+    studentDataset = await run("vik99290").catch(console.dir);
+    console.log(studentDataset);
 }
-});
+hello();
+
 
 
 const PORT = 6969
