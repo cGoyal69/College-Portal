@@ -24,8 +24,8 @@ async function run(user) {
     return result;
 };
 
-app.get('/:username', async (req, res) => {
-  const { username } = req.params;
+app.get('/', async (req, res) => {
+  const { username } = req.body;
   console.log("Received request for username:", username);
   try {
       const student = await run(username);
