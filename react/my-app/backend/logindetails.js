@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const loginDetailsSchema = new mongoose.Schema(
     {
-        username: {type: String,unique: true},
-        password: {type: String,unique: true},
+        username: {type: String,unique: true,required:true},
+        password: {type: String,required:true},
         Allergies: {type:String},
         "Alternative Contact Number": {type:String},
         "Blood Group": {type:String},
@@ -27,4 +27,6 @@ const loginDetailsSchema = new mongoose.Schema(
         collection: "LoginInfo",
     }
 );
-mongoose.model("LoginInfo",loginDetailsSchema);
+const Login = mongoose.model("LoginInfo",loginDetailsSchema);
+
+export{Login}
