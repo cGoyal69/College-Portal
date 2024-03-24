@@ -1,5 +1,5 @@
-const express = require('express');
-const { MongoClient } = require('mongodb');
+import express from 'express'
+import { MongoClient } from 'mongodb';
 
 const app = express();
 app.use(express.json());
@@ -7,13 +7,13 @@ app.use(express.json());
 const uri = "mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
-async function run(user) { 
+async function run(user,pass) { 
     let result = "Error";
     try {
         await client.connect();
         const database = client.db('studentdata');
         const studentdata = database.collection('studentdata');
-        const query = { username: user };
+        const query = { username: user,password: pass };
         result = await studentdata.findOne(query);
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } catch (error) {
@@ -24,13 +24,20 @@ async function run(user) {
     return result;
 };
 
-app.get('/', async (req, res) => {
-  const { username } = req.body;
+app.post('/', async (req, res) => {
+  const { username,password } = req.body;
   console.log("Received request for username:", username);
   try {
-      const student = await run(username);
-      console.log("Retrieved student data:", student);
-      res.json(student);
+      const student = await run(username,password);
+      if(student)
+      {
+        console.log("Retrieved student data:", student);
+        res.json({ message:'login Successful'});
+      }
+      else
+      {
+        res.json({message:'login Unsuccess'});
+      }
   } catch (error) {
       console.error("Error retrieving student data:", error);
       res.status(500).json({ error: "Internal Server Error" });
