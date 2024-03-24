@@ -1,31 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "./Header";
+import Axios from "axios";
 
-export const Login = (props) => {
+export const Login = () => {
   //Variables for username and password and submit function
-  const[user,setUser] = useState('');
-  const[pass,setPass] = useState('');
+  const [user, setUser] = useState('');
+  const [pass, setPass] = useState('');
 
-  const HandleSubmit= (e) =>{
-      e.preventDefault();
-      console.log(user, pass);
+  const navigate = useNavigate();
+
+  Axios.defaults.withCredentials = true;
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(user, pass);
+    const response = await Axios.post("http://localhost:6969/")
+    setPass(response.pass)
+    setUser(response.user)
   };
   //Routing to student page function
-  const navigate = useNavigate();
+
   const toStudent = (value) => {
-      navigate('/student');
+    navigate('/student');
   };
   const toTeacher = (value) => {
     navigate('/teacher');
-};
+  };
   //the html elemnt to show
   return (
     <div className="loginpage">
-      <Header/>
+      <Header />
       <div className='Login-Box'>
         <div className='instruction'>
-          Instructions<br/> 
+          Instructions<br />
           <ol>
             <li>Please login with your username provided to you by your institution</li>
             <li>If you forget password go to admin section for password username reset</li>
@@ -37,20 +44,29 @@ export const Login = (props) => {
           <form className="form" action='' onSubmit={HandleSubmit}>
             <div className="userinput">
               <label className="use" htmlFor="username">username</label>
-              <input 
-                className="user" 
-                id="user" 
-                name="user" 
-                value={user} 
-                onChange={(e)=>setUser(e.target.value)} 
-                type="text" 
-                placeholder="Username" 
+              <input
+                className="user"
+                autoComplete="off"
+                id="user"
+                name="user"
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
+                type="text"
+                placeholder="Username"
                 required
               />
             </div>
             <div className="passinput">
               <label className="pas" htmlFor="password ">password</label>
-              <input id="pass" name="pass" className="pass" value={pass} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="password" required/>
+              <input id="pass" 
+              autoComplete="off" 
+              name="pass" 
+              className="pass" 
+              value={pass} 
+              onChange={(e) => setPass(e.target.value)} 
+              type="password" 
+              placeholder="password" 
+              required />
             </div>
             <button className="button" type="button" onClick={HandleSubmit}>Login</button>
           </form>
