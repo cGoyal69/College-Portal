@@ -1,6 +1,6 @@
 import express from 'express'
 import { MongoClient } from 'mongodb';
-const cors = require('cors')
+import cors from 'cors';
 const app = express();
 app.use(express.json());
 app.use(cors({
@@ -35,11 +35,11 @@ app.post('/', async (req, res) => {
       if(student)
       {
         console.log("Retrieved student data:", student);
-        res.json({ message:'login Successful'});
+        return res.status(200).json({ message: student.Name});
       }
       else
       {
-        res.json({message:'login Unsuccess'});
+        return res.status(400).json({message:'Login Unsucess'})
       }
   } catch (error) {
       console.error("Error retrieving student data:", error);
