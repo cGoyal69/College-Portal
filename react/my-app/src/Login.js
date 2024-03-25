@@ -14,7 +14,7 @@ export const Login = () => {
     e.preventDefault();
     console.log(user, pass);
     try{
-      const response = await axios.get("http://localhost:6969/", {user, pass})
+      const response = await axios.post("http://localhost:6969/", {user, pass})
     }
     catch(e)
     {
@@ -44,7 +44,7 @@ export const Login = () => {
           </ol>
         </div>
         <div className="wrapper">
-          <form className="form" action='GET' onSubmit={HandleSubmit}>
+          <form className="form" action='POST' onSubmit={HandleSubmit}>
             <div className="userinput">
               <label className="use" htmlFor="username">username
               <input
