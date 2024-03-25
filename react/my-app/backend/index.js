@@ -31,10 +31,10 @@ app.get("/", cors(), (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-  const { username, password } = req.body;
-  console.log("Received request for username:", username);
+  const { user, pass } = req.body;
+  console.log("Received request for user:", pass);
   try {
-      const student = await run(username,password);
+      const student = await run(user,pass);
       if(student)
       {
         console.log("Retrieved student data:", student);
