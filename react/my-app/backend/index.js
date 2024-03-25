@@ -3,6 +3,7 @@ import { MongoClient } from 'mongodb';
 import cors from 'cors';
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 
 const uri = "mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority";
@@ -25,11 +26,15 @@ async function run(user,pass) {
     return result;
 };
 
-app.get('/', cors(), async (req, res) => {
-  const { user, pass } = req.body;
-  console.log("Received request for user:", pass);
+app.get("/", cors(), (req, res) => {
+
+})
+
+app.post('/', async (req, res) => {
+  const { username, password } = req.body;
+  console.log("Received request for username:", username);
   try {
-      const student = await run(user,pass);
+      const student = await run(username,password);
       if(student)
       {
         console.log("Retrieved student data:", student);

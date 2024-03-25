@@ -14,7 +14,7 @@ export const Login = () => {
     e.preventDefault();
     console.log(user, pass);
     try{
-    axios.post("http://localhost:6969/", {user, pass})
+      await axios.post("http://localhost:6969/", {user, pass})
     }
     catch(e)
     {
