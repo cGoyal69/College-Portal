@@ -18,6 +18,7 @@ export const Login = () => {
     {
       console.log(response.message);
       navigate('/student');
+      jwbfjwbanfj
     }
   };
   //Routing to student page function
