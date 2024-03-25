@@ -27,22 +27,22 @@ async function run(user,pass) {
 };
 
 app.get("/", cors(), (req, res) => {
-
 })
 
 app.post('/', async (req, res) => {
   const { user, pass } = req.body;
-  console.log("Received request for user:", pass);
+  console.log("Received request for user:", user);
   try {
       const student = await run(user,pass);
       if(student)
       {
         console.log("Retrieved student data:", student);
-        res.json({ message:'login Successful'});
+        return res.status(200).json(student);
       }
       else
       {
-        res.json({message:'login Unsuccess'});
+        console.log(student)
+        return res.json("Error");
       }
   } catch (error) {
       console.error("Error retrieving student data:", error);

@@ -15,6 +15,15 @@ export const Login = () => {
     console.log(user, pass);
     try{
       await axios.post("http://localhost:6969/", {user, pass})
+      .then(res => {
+        if(res.data === "Error")
+        {
+          console.log("maa Chuda");
+        }
+        else{
+          console.log(res.data.Name);
+        }
+      })
     }
     catch(e)
     {
