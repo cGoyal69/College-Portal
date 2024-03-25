@@ -1,8 +1,11 @@
 import express from 'express'
 import { MongoClient } from 'mongodb';
-
+const cors = require('cors')
 const app = express();
 app.use(express.json());
+app.use(cors({
+    origin:"*",
+}))
 
 const uri = "mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
