@@ -43,7 +43,7 @@ export const Login = () => {
         <div className="wrapper">
           <form className="form" action='' onSubmit={HandleSubmit}>
             <div className="userinput">
-              <label className="use" htmlFor="username">username</label>
+              <label className="use" htmlFor="username">username
               <input
                 className="user"
                 autoComplete="off"
@@ -55,9 +55,10 @@ export const Login = () => {
                 placeholder="Username"
                 required
               />
+              </label>
             </div>
             <div className="passinput">
-              <label className="pas" htmlFor="password ">password</label>
+              <label className="pas" htmlFor="password ">password
               <input id="pass" 
               autoComplete="off" 
               name="pass" 
@@ -67,6 +68,7 @@ export const Login = () => {
               type="password" 
               placeholder="password" 
               required />
+              </label>
             </div>
             <button className="button" type="button" onClick={HandleSubmit}>Login</button>
           </form>
