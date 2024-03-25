@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "./Header";
-import Axios from "axios";
+import axios from "axios";
 
 export const Login = () => {
   //Variables for username and password and submit function
@@ -10,13 +10,16 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-  Axios.defaults.withCredentials = true;
   const HandleSubmit = async (e) => {
     e.preventDefault();
     console.log(user, pass);
-    const response = await Axios.post("http://localhost:6969/")
-    setPass(response.pass)
-    setUser(response.user)
+    try{
+      const response = await axios.get("http://localhost:6969/", {user, pass})
+    }
+    catch(e)
+    {
+      console.log(e);
+    }
   };
   //Routing to student page function
 
@@ -41,7 +44,7 @@ export const Login = () => {
           </ol>
         </div>
         <div className="wrapper">
-          <form className="form" action='' onSubmit={HandleSubmit}>
+          <form className="form" action='GET' onSubmit={HandleSubmit}>
             <div className="userinput">
               <label className="use" htmlFor="username">username
               <input

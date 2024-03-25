@@ -3,9 +3,7 @@ import { MongoClient } from 'mongodb';
 import cors from 'cors';
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin:"*",
-}))
+app.use(cors());
 
 const uri = "mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
@@ -16,7 +14,7 @@ async function run(user,pass) {
         await client.connect();
         const database = client.db('studentdata');
         const studentdata = database.collection('studentdata');
-        const query = { username: user,password: pass };
+        const query = { username: user, password: pass };
         result = await studentdata.findOne(query);
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } catch (error) {
@@ -27,19 +25,19 @@ async function run(user,pass) {
     return result;
 };
 
-app.post('/', async (req, res) => {
-  const { username,password } = req.body;
-  console.log("Received request for username:", username);
+app.get('/', cors(), async (req, res) => {
+  const { user, pass } = req.body;
+  console.log("Received request for user:", pass);
   try {
-      const student = await run(username,password);
+      const student = await run(user,pass);
       if(student)
       {
         console.log("Retrieved student data:", student);
-        return res.status(200).json({ message: student.Name});
+        res.json({ message:'login Successful'});
       }
       else
       {
-        return res.status(400).json({message:'Login Unsucess'})
+        res.json({message:'login Unsuccess'});
       }
   } catch (error) {
       console.error("Error retrieving student data:", error);
