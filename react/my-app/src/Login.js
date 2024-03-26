@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useHistory } from "react-router-dom";
 import { Header } from "./Header";
 import axios from "axios";
 
@@ -21,7 +21,9 @@ export const Login = () => {
           console.log("maa Chuda");
         }
         else{
-          console.log(res.data.Name);
+          const studentData = res.data;
+          console.log(studentData);
+          toStudent(studentData);
         }
       })
     }
@@ -33,7 +35,7 @@ export const Login = () => {
   //Routing to student page function
 
   const toStudent = (value) => {
-    navigate('/student');
+    navigate('/student', value);
   };
   const toTeacher = (value) => {
     navigate('/teacher');
@@ -56,30 +58,12 @@ export const Login = () => {
           <form className="form" action='POST' onSubmit={HandleSubmit}>
             <div className="userinput">
               <label className="use" htmlFor="username">username
-              <input
-                className="user"
-                autoComplete="off"
-                id="user"
-                name="user"
-                value={user}
-                onChange={(e) => setUser(e.target.value)}
-                type="text"
-                placeholder="Username"
-                required
-              />
+                <input className="user" autoComplete="off" id="user" name="user" value={user} onChange={(e) => setUser(e.target.value)} type="text" placeholder="Username" required/>
               </label>
             </div>
             <div className="passinput">
               <label className="pas" htmlFor="password ">password
-              <input id="pass" 
-              autoComplete="off" 
-              name="pass" 
-              className="pass" 
-              value={pass} 
-              onChange={(e) => setPass(e.target.value)} 
-              type="password" 
-              placeholder="password" 
-              required />
+                <input id="pass" autoComplete="off" name="pass" className="pass" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="password" required />
               </label>
             </div>
             <button className="button" type="button" onClick={HandleSubmit}>Login</button>
