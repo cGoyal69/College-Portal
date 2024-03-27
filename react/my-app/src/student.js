@@ -1,9 +1,8 @@
-import useLocation from 'react-router-dom'
+
 import {Header} from './Header'
 import {Navbar} from './NavBar'
 
 export default function Student() {
-    const {studentData} = useLocation();
     return(
       <div className='studentpage'>
         <Header theme="headerch"/>
