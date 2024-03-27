@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate, useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Header } from "./Header";
 import axios from "axios";
-
+export let studentInfo = "";
 export const Login = () => {
   //Variables for username and password and submit function
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
 
   const navigate = useNavigate();
-
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user, pass);
+    //console.log(user, pass);
     try{
       await axios.post("http://localhost:6969/", {user, pass})
       .then(res => {
@@ -21,9 +20,11 @@ export const Login = () => {
           console.log("maa Chuda");
         }
         else{
-          const studentData = res.data;
-          console.log(studentData);
-          toStudent(studentData);
+          studentInfo = res.data;
+          //console.log(studentData);
+          navigate("/student/profile", {state: studentInfo})
+          toStudent({state: studentInfo});
+          
         }
       })
     }
