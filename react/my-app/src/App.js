@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import Student from './student'
-import{Login} from './Login'
-import Profile from './profile';
-import Course from "./course";
-import Attendence from "./attendence";
-import Grades from "./grades";
-import Complaint from "./complaint";
+import Student from './student/student'
+import{Login} from './components/Login'
+import Profile from './student/profile';
+import Course from "./student/course";
+import Attendence from "./student/attendence";
+import Grades from "./student/grades";
+import Complaint from "./student/complaint";
  
 
 export default function App() {

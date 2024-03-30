@@ -1,6 +1,6 @@
 
-import {Header} from './Header'
-import {Navbar} from './NavBar'
+import {Header} from '../components/Header'
+import {Navbar} from '../components/NavBar'
 
 export default function Student() {
     return(

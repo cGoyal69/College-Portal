@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Header } from "./Header";
-import { Navbar } from "./NavBar";
-import { studentInfo } from "./Login";
+import { Header } from "../components/Header";
+import { Navbar } from "../components/NavBar";
+import { studentInfo } from "../components/Login";
 
 
 export default class Profile extends Component {

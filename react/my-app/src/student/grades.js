@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Header } from "./Header";
-import { Navbar } from "./NavBar";
+import { Header } from "../components/Header";
+import { Navbar } from "../components/NavBar";
 
 export default class Grades extends Component {
     render()

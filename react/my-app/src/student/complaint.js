@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { DropdownMenu } from "./dropdown";
-import { Header } from "./Header";
-import { Navbar } from "./NavBar";
+import { DropdownMenu } from "../components/dropdown";
+import { Header } from "../components/Header";
+import { Navbar } from "../components/NavBar";
 
 export default class Complaint extends Component {
     render()
