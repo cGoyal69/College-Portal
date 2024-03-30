@@ -326,14 +326,17 @@ a > svg{
   font-size: 17px;
   padding: 5px;
 }
-.bo label {
+.bo label, .ad label, .ga label, .he label{
   width: 200px;
+  
 }
 .input{
   border: none;
   outline: none;
   background: transparent;
-  width: max-content;
+  position: relative;
+  width: min-content;
+  top: -3px;
   font-weight: bold;
   padding: 5px;
   font-size: 17px;
@@ -351,7 +354,14 @@ a > svg{
 .phydform{
   padding-bottom: 50px;
 }
-.bo{
+.bo, .ad, .ga, .he{
   display: flex;
   justify-content: space-between;
+}
+.addform textarea{
+  width: max-content;
+  height: 100px;
+}
+.branchform input{
+  text-wrap:wrap;
 }

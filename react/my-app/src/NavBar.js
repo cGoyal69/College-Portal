@@ -6,7 +6,7 @@ import { IconContext } from 'react-icons'
 import * as IoIcons from 'react-icons/io';
 import * as GrIcons from "react-icons/gr";
 import * as GoIcons from "react-icons/go";
-
+import { useNavigate } from "react-router-dom";
 const studentSidebarData = [
     {
         title: 'Home',
@@ -82,6 +82,13 @@ export function Navbar({name}){
         c.style.opacity='1';
         setTimeout(displaytimer2, 1000);
     }
+    const navigate = useNavigate();
+    const onConfirmRefresh = function (event) {
+        event.preventDefault();
+        return event.returnValue = "Are you sure you want to leave the page?";
+      }
+      
+      window.addEventListener("beforeunload", onConfirmRefresh, { capture: true });
     return(
         <div className='nav-menu'>
             <IconContext.Provider value={{color:'black'}}>

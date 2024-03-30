@@ -68,10 +68,10 @@ export default class Profile extends Component {
         
         const addressprofiledata = [
             {
-                value: 'Permanenet Address',
+                value: 'Permanent Address',
                 readonly: true,
                 cName: 'ad addform',
-                type: 'text', 
+                type: 'textarea', 
                 answer: studentInfo['Permanent Address']
             },
             {
@@ -178,14 +178,27 @@ export default class Profile extends Component {
                             <h2>Address Infromation</h2>
                             <form>
                                 {addressprofiledata.map((props,value) => {
-                                    return(
-                                        <div key={value} className={props.cName}>
-                                         <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
-                                         :
-                                        <input readOnly={props.readonly} className='input' name={props.value} type={props.type} id={props.value} value={props.answer}/>
-                                        <br/>
-                                        </div>
-                                    );
+                                    if(props.value==='Permanent Address'){
+                                        return(
+                                            <div key={value} className={props.cName}>
+                                            <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
+                                            :
+                                            <textarea readOnly={props.readonly} className='input' name={props.value} type={props.type} id={props.value} value={props.answer}/>
+                                            <br/>
+                                            </div>
+                                        );
+                                    }
+                                    else
+                                    {
+                                        return(
+                                            <div key={value} className={props.cName}>
+                                            <label className={props.cName} htmlFor={props.value}>{props.value}</label>   
+                                            :
+                                            <input readOnly={props.readonly} className='input' name={props.value} type={props.type} id={props.value} value={props.answer}/>
+                                            <br/>
+                                            </div>
+                                        );
+                                    }
                                 })}
                             </form>
                         </div>
