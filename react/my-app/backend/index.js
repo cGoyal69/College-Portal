@@ -1,10 +1,6 @@
 import express from 'express'
 import { MongoClient } from 'mongodb';
 import cors from 'cors';
-import jwt from 'jsonwebtoken';
-
-
-const secretKey = 'json_jwt_secretkey@hellokitty96'
 
 const app = express();
 
@@ -43,14 +39,8 @@ app.post('/', async (req, res) => {
         
       if(student)
       {
-        jwt.sign({student},secretKey,{expiresIn: '30m'},(err, token) =>
-        { 
-            let tok = token
-            console.log(tok);
-            student['token'] = token;
-            return res.status(200).json(student);
-        })  
         console.log("Retrieved student data:", student);
+        return res.status(200).json(student);
         
       }
       else
@@ -64,7 +54,6 @@ app.post('/', async (req, res) => {
   }
 });
 
-function verifytoken(res,req,next){
 
 }
 const PORT = 6969;
