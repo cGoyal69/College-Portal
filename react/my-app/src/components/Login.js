@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "./Header";
 import axios from "axios";
+
+
 export let studentInfo = "";
 export const Login = () => {
   //Variables for username and password and submit function
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
-
+	function refresh (){
+		window.location.reload();
+	}
   const navigate = useNavigate();
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +21,11 @@ export const Login = () => {
       .then(res => {
         if(res.data === "Error")
         {
-          console.log("maa Chuda");
+          console.log("Hi");
+          let c = document.getElementsByClassName('loginpage')[0];
+          c.style.opacity = "0.3";
+		  let d = document.getElementsByClassName('error-box')[0];
+		  d.style.display = 'block';
         }
         else{
           studentInfo = res.data;
@@ -43,6 +51,7 @@ export const Login = () => {
   };
   //the html elemnt to show
   return (
+    <>
     <div className="loginpage">
       <Header />
       <div className='Login-Box'>
@@ -70,9 +79,18 @@ export const Login = () => {
             <button className="button" type="button" onClick={HandleSubmit}>Login</button>
           </form>
         </div>
-        <button className="button" type="button" onClick={toStudent}>Student</button>
         <button className="button" type="button" onClick={toTeacher}>Teacher</button>
       </div>
     </div>
+    <div className="error-box">
+		<h2>Login Unsuccessfull</h2>
+		<p>
+			Please Fill your Login Credentials correctly
+		</p>
+		<button className="close-modal" onClick={refresh}>
+			CLOSE
+		</button>
+    </div>
+    </>
   );
-}
+};

@@ -6,6 +6,7 @@ import Course from "./student/course";
 import Attendence from "./student/attendence";
 import Grades from "./student/grades";
 import Complaint from "./student/complaint";
+
  
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path='/student/attendence' element={<Attendence />}/>
           <Route path='/student/grades' element={<Grades />}/>
           <Route path="/student/complaint" element={<Complaint/>}/>
+      
         </Routes>
       </Router>
     </div>

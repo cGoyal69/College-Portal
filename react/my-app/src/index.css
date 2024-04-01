@@ -365,3 +365,9 @@ a > svg{
 .branchform input{
   text-wrap:wrap;
 }
+.error-box{
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+}
