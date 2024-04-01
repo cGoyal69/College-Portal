@@ -54,8 +54,6 @@ app.post('/', async (req, res) => {
   }
 });
 
-
-}
 const PORT = 6969;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
