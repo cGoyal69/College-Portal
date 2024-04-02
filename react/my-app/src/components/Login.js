@@ -17,7 +17,7 @@ export const Login = () => {
     e.preventDefault();
     //console.log(user, pass);
     try{
-      await axios.post("http://localhost:6969/", {user, pass})
+      await axios.post("http://localhost:6969/login", {user, pass})
       .then(res => {
         if(res.data === "Error")
         {
@@ -30,8 +30,8 @@ export const Login = () => {
         else{
           studentInfo = res.data;
           //console.log(studentData);
-          navigate("/student/profile", {state: studentInfo})
-          toStudent({state: studentInfo});
+          navigate("/student/profile")
+          toStudent();
           
         }
       })
@@ -80,7 +80,7 @@ export const Login = () => {
           </form>
         </div>
         <button className="button" type="button" onClick={toTeacher}>Teacher</button>
-      </div>
+      </div> 
     </div>
     <div className="error-box">
 		<h2>Login Unsuccessfull</h2>
