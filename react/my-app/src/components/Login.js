@@ -24,8 +24,8 @@ export const Login = () => {
           console.log("Hi");
           let c = document.getElementsByClassName('loginpage')[0];
           c.style.opacity = "0.3";
-		  let d = document.getElementsByClassName('error-box')[0];
-		  d.style.display = 'block';
+          let d = document.getElementsByClassName('error-box')[0];
+          d.style.display = 'block';
         }
         else{
           studentInfo = res.data;
