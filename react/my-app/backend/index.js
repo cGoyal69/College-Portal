@@ -51,27 +51,9 @@ async function run2(user,) {
     return result;
 };
 
-async function run3(id,) { 
-    let result = "Error";
-    try {
-        await client.connect();
-        const database = client.db('studentdata');
-        const studentdata = database.collection('studentdata');
-        let s = new ObjectId(id);
-        const query = { _id : s };
-        result = await studentdata.findOne(query);
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } catch (error) {
-        console.error("Error connecting to MongoDB:", error);
-    } finally {
-        await client.close();
-    }
-    return result;
-};
 
 async function run4(id, encryptedPassword) {
     let updateResult = "Error"; // Updated to indicate update status by default
-    let result = "Error"; 
     try {
       await client.connect();
       const database = client.db('studentdata');
@@ -82,7 +64,6 @@ async function run4(id, encryptedPassword) {
       const update = { $set: { password: encryptedPassword } }; // More concise update object
   
       updateResult = await studentdata.updateOne(query, update);
-      result = await studentdata.findOne(query);
       // Check update result for success
       if (updateResult.modifiedCount !== 1) {
         console.error("Password update failed!");
@@ -97,8 +78,7 @@ async function run4(id, encryptedPassword) {
     } finally {
       await client.close();
     }
-  
-    return result;
+    return updateResult;
   }
 
 app.get("/", cors(), (req, res) => {
@@ -171,7 +151,7 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-app.post('/forgot-password', async (req,res) =>
+/*app.post('/forgot-password', async (req,res) =>
 {
    const {user} = req.body ;
    console.log("Received request for user:", user);
@@ -209,13 +189,47 @@ app.get("/reset-password/:id/:token1", async (req, res) => {
         return res.status(401).json({ error: "Invalid token" });
     }
 });
-
-app.post("/reset-password/:id/:token1", async (req,res) => {
-    const { id, token1 } = req.params;
-    const{ password } = req.body;
-    const User = await run3(id);
-    console.log(User);
-    if(!User){
+*/
+app.post("/reset-password", async (req,res) => {
+    
+    const{ tok, password } = req.body;
+    try {
+        console.log("huofhrouifr3uoifb")
+            const User = jwt.verify(tok, JWT_SECRET, (err,res)=>{
+                //console.log(User)
+            if(err)
+            {
+                return "token expired";
+            }
+            return res;
+            });
+            console.log(User)
+            if (User==="token expired") {
+            return res.json({status: "error" , data : "token expired"});
+            }
+            else
+            {
+                const student = await run2(User.user)
+                if(student)
+                {
+                    const encryptyedPassword = await bcrypt.hash(password,10);
+                    const change = await run4(student._id , encryptyedPassword)
+                    console.log(change);
+                    return res.json({change});
+                    
+                }
+                else
+                {
+                    console.log(student)
+                    return res.json("Error");
+                }
+            }
+        }
+        catch (error) {
+            console.error("Error retrieving student data:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
+    /*if(!User){
         return res.json("User Doesn't Exist");
     }
     else{
@@ -231,5 +245,5 @@ app.post("/reset-password/:id/:token1", async (req,res) => {
         } catch (error) {
             res.json({status: "Something Went Wrong"});
         }
-    }
+    }*/
 });
