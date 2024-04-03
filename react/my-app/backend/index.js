@@ -151,45 +151,6 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-/*app.post('/forgot-password', async (req,res) =>
-{
-   const {user} = req.body ;
-   console.log("Received request for user:", user);
-   try {
-    let student = await run2(user);
-    console.log(student.Name);
-        if(!student)
-        {
-            return res.send('User Not Exist');   
-        }
-        else{
-        const secret = JWT_SECRET + student.password;
-        const token1 = jwt.sign({user: student.username , id: student._id} , secret ,{expiresIn: "10m",});
-        const link = `http://localhost:6969/reset-password/${student._id}/${token1}`;
-        console.log(link);
-        }
-    } catch (error) {
-    }
-});
-
-app.get("/reset-password/:id/:token1", async (req, res) => {
-    const { id, token1 } = req.params;
-    console.log(req.params);
-    const User = await run3(id);
-    console.log(User);
-    if (!User) {
-        return res.status(404).json({ error: "User Doesn't Exist" });
-    }
-    const secret = JWT_SECRET + User.password;
-    try {
-        const verify = jwt.verify(token1, secret);
-        const isVerified = true; // Replace with your logic to determine verification status
-        return res.render('index', { email: 'your_email@example.com', status: isVerified ? 'verified' : 'not_verified' });
-    } catch (error) {
-        return res.status(401).json({ error: "Invalid token" });
-    }
-});
-*/
 app.post("/reset-password", async (req,res) => {
     
     const{ tok, password } = req.body;
@@ -229,21 +190,5 @@ app.post("/reset-password", async (req,res) => {
             console.error("Error retrieving student data:", error);
             res.status(500).json({ error: "Internal Server Error" });
         }
-    /*if(!User){
-        return res.json("User Doesn't Exist");
-    }
-    else{
-        const secret = JWT_SECRET + User.password;
-        try {
-            const verify = jwt.verify(token1,secret);
-            const encryptyedPassword = await bcrypt.hash(password,10);
-            const change = await run4(id , encryptyedPassword);
-            console.log(change);
-            if(change){
-                return res.json({status: 'Password Updated'});
-            }
-        } catch (error) {
-            res.json({status: "Something Went Wrong"});
-        }
-    }*/
+    
 });
