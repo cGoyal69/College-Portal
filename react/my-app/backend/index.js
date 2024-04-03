@@ -16,7 +16,7 @@ app.use(cors());
 const uri = "mongodb+srv://college:college123@myatlasclusteredu.tchpdvk.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
-async function run(user,pass) { 
+/*async function run(user,pass) { 
     let result = "Error";
     try {
         await client.connect();
@@ -31,7 +31,7 @@ async function run(user,pass) {
         await client.close();
     }
     return result;
-};
+};*/
 
 async function run2(user,) { 
     let result = "Error";
@@ -129,7 +129,7 @@ app.post('/user-details', async (req, res) => {
             }
             else
             {
-                const student = await run(User.user , User.pass)
+                const student = await run2(User.user)
                 if(student)
                 {
                     console.log("Retrieved student data:", student);

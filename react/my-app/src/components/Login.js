@@ -28,11 +28,8 @@ export const Login = () => {
           d.style.display = 'block';
         }
         else{
-          studentInfo = res.data;
-          //console.log(studentData);
-          navigate("/student/profile")
+          navigate("/student")
           toStudent();
-          
         }
       })
     }
