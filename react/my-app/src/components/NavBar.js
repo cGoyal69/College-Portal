@@ -6,7 +6,7 @@ import { IconContext } from 'react-icons'
 import * as IoIcons from 'react-icons/io';
 import * as GrIcons from "react-icons/gr";
 import * as GoIcons from "react-icons/go";
-//import * as RiIcons from "react-icons/ri";
+import * as RiIcons from "react-icons/ri";
 const studentSidebarData = [
     {
         title: 'Home',
@@ -50,12 +50,12 @@ const studentSidebarData = [
         icon:   <GoIcons.GoReport/>,
         cName:  'nav-text complaint'
     },
-    /*{
-        title: 'Update Password',
-        path: '/student/updatepass',
+    {
+        title: 'Reset Password',
+        path: '/student/resetpassword',
         icon:   <RiIcons.RiLockPasswordLine />,
-        cName:  'nav-text updatepass'
-    },*/
+        cName:  'nav-text resetpass'
+    },
 ]
 export function Navbar({name}){
 

@@ -165,7 +165,7 @@ app.post("/reset-password", async (req,res) => {
             return res;
             });
             if (User==="token expired") {
-            return res.json({status: "error" , data : "token expired"});
+            return res.json({status: "error" , data : "Error"});
             }
             else
             {

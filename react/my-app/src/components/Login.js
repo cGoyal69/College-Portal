@@ -6,6 +6,14 @@ import axios from "axios";
 
 export let studentInfo = "";
 export const Login = () => {
+  function checkEvt(){
+    var evTypep=window.performance.getEntriesByType("navigation")[0].type;
+    if (evTypep == 'reload'){
+        window.location.replace('/');
+    }
+    
+  }
+  checkEvt();
   //Variables for username and password and submit function
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
@@ -28,6 +36,7 @@ export const Login = () => {
           d.style.display = 'block';
         }
         else{
+          studentInfo = res.data
           navigate("/student")
           toStudent();
         }
@@ -62,7 +71,7 @@ export const Login = () => {
           </ol>
         </div>
         <div className="wrapper">
-          <form className="form" action='POST' onSubmit={HandleSubmit}>
+          <form className="form" method='POST' onSubmit={HandleSubmit}>
             <div className="userinput">
               <label className="use" htmlFor="username">username
                 <input className="user" autoComplete="off" id="user" name="user" value={user} onChange={(e) => setUser(e.target.value)} type="text" placeholder="Username" required/>
