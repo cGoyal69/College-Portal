@@ -8,7 +8,7 @@ export let studentInfo = "";
 export const Login = () => {
   function checkEvt(){
     var evTypep=window.performance.getEntriesByType("navigation")[0].type;
-    if (evTypep == 'reload'){
+    if (evTypep === 'reload'){
         window.location.replace('/');
     }
     
