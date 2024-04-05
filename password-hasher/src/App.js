@@ -12,15 +12,17 @@ function App() {
         e.preventDefault();
         //console.log(user, pass);
         try{
-          await axios.post("http://localhost:1/", {pass})
+          await axios.post("http://localhost:1111/", {pass})
           .then(res => {
-
+                console.log("hello");
                 console.log("Hi");
-                let c = document.getElementsByClassName('loginpage')[0];
-                c.style.opacity = "0.3";
+                password = res.data;
+                console.log(password);
                 let d = document.getElementsByClassName('error-box')[0];
                 d.style.display = 'block';
-                password = res.data;
+                let z = document.getElementById('hashedpass');
+                z.innerHTML = z.innerHTML + password;
+                
           })
         }
         catch(e)
@@ -28,13 +30,13 @@ function App() {
           console.log(e);
         }
       };
-    return (
-            <>
+        return (
+            <div className='loginpage'>
             <h1>
                 Password - Bcrpyter
             </h1>
             <h3>
-                program conveets your password into a hashed password using bcrypt library of node
+                program converts your password into a hashed password using bcrypt library of node
             </h3>
             <form className="form" method='POST' onSubmit={HandleSubmit}>
             <div className="passinput">
@@ -46,14 +48,14 @@ function App() {
             </form>
             <div className="error-box">
 		<h2>Password Hashed</h2>
-		<p>
-			Hashed Password:{password}
+		<p id="hashedpass">
+			Hashed Password: 
 		</p>
 		<button className="close-modal" onClick={refresh}>
 			CLOSE
 		</button>
     </div>
-            </>
+    </div>
         );
 }
 

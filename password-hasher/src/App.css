@@ -1,0 +1,16 @@
+.error-box {
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 20%;
+  background-color: peachpuff;
+  padding: 20px;
+}
+.loginpage {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+}
+.pass{
+  margin: 5px;
+}

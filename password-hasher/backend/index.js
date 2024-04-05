@@ -16,6 +16,7 @@ app.post('/', async (req, res) => {
     console.log("Received request for user:", pass);
     try {
         const encryptyedPassword = await bcrypt.hash(pass,10);
+        console.log(encryptyedPassword);
         return res.json(encryptyedPassword)
         }
     catch (error) {
@@ -23,7 +24,7 @@ app.post('/', async (req, res) => {
         res.status(500).json("Error");
     }
 });
-const PORT = 1;
+const PORT = 1111;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
