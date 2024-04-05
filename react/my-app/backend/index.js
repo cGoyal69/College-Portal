@@ -190,3 +190,27 @@ app.post("/reset-password", async (req,res) => {
         }
     
 });
+app.post("/reset-pass", async (req,res) => {
+    
+    const{ user, password } = req.body;
+    try {
+                const student = await run2(user)
+                if(student)
+                {
+                    const encryptyedPassword = await bcrypt.hash(password,10);
+                    const change = await run4(student._id , encryptyedPassword)
+                    console.log(change);
+                    return res.json({change});
+                }
+                else
+                {
+                    console.log(student)
+                    return res.json("Error");
+                }
+        }
+        catch (error) {
+            console.error("Error retrieving student data:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
+    
+});
