@@ -133,28 +133,28 @@ app.post("/reset-password", async (req,res) => {
         }
     
 });
-/*
+
 app.post("/reset-pass", async (req,res) => {
-    
+    let h = '';
     const{ user, password } = req.body;
     try {
-                const student = await run2(user)
-                if(student)
-                {
-                    const encryptyedPassword = await bcrypt.hash(password,10);
-                    const change = await run4(student._id , encryptyedPassword)
-                    console.log(change);
-                    return res.json({change});
-                }
-                else
-                {
-                    console.log(student)
-                    return res.json("Error");
-                }
+                const encryptyedPassword = await bcrypt.hash(password,10);
+                            console.log(encryptyedPassword);
+                                        //console.log(result);
+                                        const sql = "update student set Password = '"+encryptyedPassword+"' where Username = '"+user+"' ";
+                                        console.log(user);
+                                        con.query(sql , async (err,result1) => {
+                                            if(err) return res.json("Error");
+                                                else
+                                                {
+                                                    h = "done";
+                                                    return res.json(h);
+                                                }  
+                                        })
         }
         catch (error) {
             console.error("Error retrieving student data:", error);
             res.status(500).json({ error: "Internal Server Error" });
         }
     
-});*/
+});
