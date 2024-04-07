@@ -27,6 +27,7 @@ export const Login = () => {
     try{
       await axios.post("http://localhost:6969/login", {user, pass})
       .then(res => {
+        console.log(res.data);
         if(res.data === "Error")
         {
           console.log("Hi");
