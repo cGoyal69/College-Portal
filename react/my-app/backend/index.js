@@ -19,23 +19,33 @@ const con = mysql.createConnection({
   database: 'College'
 });
 
-let hello = ''
 app.post('/login',async (req,res) => {
 	const {user,pass} = req.body
-	const sql = "select * from student where Username = '"+user+"' ";
+    let hello = "";
+	const sql = "select * from student where roll = '"+user+"' ";
 	console.log("hello");
+    let course = "";
 	con.query(sql , async (err,result) => {
 		if(err) return res.json("Error");
 		else
 		{
-			console.log(result[0]['Password']);
-			 hello = result[0]['Username']
-			 const isMatch =  await bcrypt.compare(pass, result[0]['Password']);
-             console.log(isMatch);
+			console.log(result[0]['password']);
+			hello = result[0]['username']
+			const isMatch =  await bcrypt.compare(pass, result[0]['password']);
+            console.log(isMatch);
 			if (isMatch) {
-                const token = jwt.sign({user} , JWT_SECRET, { expiresIn: "30m" });
+                let token = jwt.sign({user} , JWT_SECRET, { expiresIn: "30m" });
                 console.log("Login successful, generated token:", token);
-                return res.json({ token }); // Send token in the response
+
+                const sql1 = "select ccode from courses";
+                con.query(sql1 , async (err,courses) => {
+                    if(err) return res.json("Error");
+                    else
+                    {
+                        return res.json({ token, courses });
+                    }
+                })
+                 // Send token in the response
 			}
 			else
             {
@@ -43,28 +53,28 @@ app.post('/login',async (req,res) => {
             }
 		}
 	})
-})
-
-
-
+    console.log(course)
+    
+});
 app.post('/user-details', async (req, res) => {
-    const {tok} = req.body;   
-    console.log("Received request for user:", tok);
+    const tok = req.body;
+    console.log(tok);
+    console.log("Userdetails Received request for user:", tok.studentToken);
     try {
-            const User = jwt.verify(tok, JWT_SECRET, (err,res)=>{
+            const User = jwt.verify(tok.studentToken, JWT_SECRET, (err,res)=>{
                 if(err)
                 {
                     return "token expired";
                 }
                 return res;
             });
-            console.log(User.hello)
+            console.log(User)
             if (User==="token expired") {
                 return res.send({status: "error" , data : "token expired"});
             }
             else
             {
-                const sql = "select * from student where Username = '"+User.hello+"' ";
+                const sql = "select * from student where roll = '"+User.user+"' ";
                 con.query(sql , async (err,result) => {
                     if(err) return res.json("Error");
                         else
@@ -81,11 +91,106 @@ app.post('/user-details', async (req, res) => {
     }
 });
 
+//const coursesList = ["CS1012_23", "CS2015_22", "EC2032_22", "CS2043_22"];
+app.post('/grade', async (req, res) => {
+    const tok = req.body;
+    console.log('Grade Token Receive : ' ,tok);
+    const courses = tok.studentT.courses;
+   //console.log(courses);
+    const coursesList = [];
+    courses.forEach((course) => {
+      coursesList.push(course.ccode);
+    });
+    console.log(coursesList);
+    console.log("token in Grade:", tok.studentT.token);
+    try {
+      const User = jwt.verify(tok.studentT.token, JWT_SECRET, (err, res) => {
+        if (err) return "token expired";
+        return res;
+      });
+      console.log("Details received :", User);
+      if (User === "token expired") {
+        return res.send({ status: "error", data: "token expired" });
+      } else {
+        const coursedataFetch = async (coursesList) => {
+          let courseDetails = [];
+          for (const course of coursesList) {
+            const sql = `select * from ${course} where roll = '${User.user}'`;
+            try {
+              const result = await new Promise((resolve, reject) => {
+                con.query(sql, (err, data) => {
+                  if (err) reject(err);
+                  else resolve(data);
+                });
+              });
+              if(result.length > 0){
+              //console.log(result[0])
+              const sql1 = `select * from courses where ccode = '${course}'`;
+              try {
+                const result1 = await new Promise((resolve, reject) => {
+                  con.query(sql1, (err, data) => {
+                    if (err) reject(err);
+                    else resolve(data);
+                  });
+                });
+                    for(let i = 0; i < result.length; i++)
+                    {
+                        result[i]['cname'] = result1[0]['cname'];
+                        result[i]['credit'] = result1[0]['credit'];
+                        result[i]['ccode'] = course;
+                    }
+                }
+                
+
+                catch (error) {
+                    console.error("Error fetching data for course:", course, error);
+                    // Handle individual course query errors (optional)
+                  }
+                // const sql1 = "select ccode from courses";
+                // con.query(sql1 , async (err,courses) => {
+                //     if(err) return res.json("Error");
+                //     else
+                //     {
+                //         return res.json({ token, courses });
+                //     }
+                // })
+                for(let i = 0; i < result.length; i++)
+                    courseDetails.push(result[i]); 
+                for(let i = 0; i < courseDetails.length; i++)
+                {
+                    for(let j = i; j < courseDetails.length; j++)
+                    {
+                        if(courseDetails[i]['sem'] > courseDetails[j]['sem'])
+                        {
+                            let k = courseDetails[i];
+                            courseDetails[i] = courseDetails[j];
+                            courseDetails[j] = k;
+                        }
+                    }
+                }
+              }// Push entire result array for each course
+            } catch (error) {
+              console.error("Error fetching data for course:", course, error);
+              // Handle individual course query errors (optional)
+            }
+          }
+          return courseDetails;
+        }
+        const coursesData = await coursedataFetch(coursesList);
+        console.log("hello", coursesData);
+        return res.json(coursesData);
+      }
+    } catch (error) {
+      console.error("Error retrieving student data:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+  
+
 const PORT = 6969;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
 app.post("/reset-password", async (req,res) => {
     let h = '';
     const{ tok, password } = req.body;
@@ -103,7 +208,7 @@ app.post("/reset-password", async (req,res) => {
             }
             else
             {
-                const sql = "select * from student where Username = '"+User.user+"' ";
+                const sql = "select * from student where username = '"+User.user+"' ";
                 con.query(sql , async (err,result) => {
                     if(err) return res.json("Error");
                         else
@@ -112,7 +217,7 @@ app.post("/reset-password", async (req,res) => {
                             const encryptyedPassword = await bcrypt.hash(password,10);
                             console.log(encryptyedPassword);
                                         //console.log(result);
-                                        const sql = "update student set Password = '"+encryptyedPassword+"' where Username = '"+User.user+"' ";
+                                        const sql = "update student set password = '"+encryptyedPassword+"' where username = '"+User.user+"' ";
                                         console.log(User.user);
                                         con.query(sql , async (err,result1) => {
                                             if(err) return res.json("Error");
@@ -131,9 +236,7 @@ app.post("/reset-password", async (req,res) => {
             console.error("Error retrieving student data:", error);
             res.status(500).json({ error: "Internal Server Error" });
         }
-    
 });
-
 app.post("/reset-pass", async (req,res) => {
     let h = '';
     const{ user, password } = req.body;
@@ -141,7 +244,7 @@ app.post("/reset-pass", async (req,res) => {
                 const encryptyedPassword = await bcrypt.hash(password,10);
                             console.log(encryptyedPassword);
                                         //console.log(result);
-                                        const sql = "update student set Password = '"+encryptyedPassword+"' where Username = '"+user+"' ";
+                                        const sql = "update student set password = '"+encryptyedPassword+"' where username = '"+user+"' ";
                                         console.log(user);
                                         con.query(sql , async (err,result1) => {
                                             if(err) return res.json("Error");
@@ -156,5 +259,4 @@ app.post("/reset-pass", async (req,res) => {
             console.error("Error retrieving student data:", error);
             res.status(500).json({ error: "Internal Server Error" });
         }
-    
 });

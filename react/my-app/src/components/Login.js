@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "./Header";
 import axios from "axios";
 
-
+export let studentToken = "";
 export let studentInfo = "";
+export let studentCourses = [];
+export let studentT = "";
 export const Login = () => {
   function checkEvt(){
     var evTypep=window.performance.getEntriesByType("navigation")[0].type;
@@ -28,6 +30,10 @@ export const Login = () => {
       await axios.post("http://localhost:6969/login", {user, pass})
       .then(res => {
         console.log(res.data);
+        studentT = res.data;
+        studentToken = res.data.token;
+        studentCourses = res.data.courses;
+        console.log(studentCourses);
         if(res.data === "Error")
         {
           console.log("Hi");
@@ -41,7 +47,8 @@ export const Login = () => {
           navigate("/student")
           toStudent();
         }
-      })
+        
+      });
     }
     catch(e)
     {

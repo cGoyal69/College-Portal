@@ -69,19 +69,21 @@ export  const Reset =() => {
                     <div className='studentcontent'>
                         <Navbar name = 'studprofile'/>
                         <div className='studprofile'>
-                            <div>
+                            <div className="reset">
                                 <h2>Reset password</h2>
                                 <form action="" method="post" onSubmit={HandleSubmit}>
+                                    <label className="reset-query">Password
                                     <input
                                     type="password"
                                     name="password"
-                                    id="password"
+                                    id="passw"
                                     placeholder="password"
                                     value={pass}
                                     required
-                                    onChange={(e) => setPass(e.target.value)}
-                                    />
+                                    onChange={(e) => setPass(e.target.value)} className="reset-input"
+                                    /></label>
                                     <br />
+                                    <label className="reset-query">Comfirm-Password
                                     <input
                                     type="password"
                                     name="confirm-password"
@@ -89,10 +91,10 @@ export  const Reset =() => {
                                     placeholder="confirm-password"
                                     value={confirmpass}
                                     required
-                                    onChange={(e) => setconfirmPass(e.target.value)}
-                                    />
+                                    onChange={(e) => setconfirmPass(e.target.value)} className="reset-input"
+                                    /></label>
                                     <br />
-                                    <input type="submit" value="submit" />
+                                    <input type="submit" value="submit" className="reset-submit"/>
                                 </form>   
                             </div>
                         </div>

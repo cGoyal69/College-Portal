@@ -335,7 +335,7 @@ a > svg{
   outline: none;
   background: transparent;
   position: relative;
-  width: min-content;
+  width: 400px;
   top: -3px;
   font-weight: bold;
   padding: 5px;
@@ -359,15 +359,26 @@ a > svg{
   justify-content: space-between;
 }
 .addform textarea{
-  width: max-content;
+
   height: 100px;
-}
-.branchform input{
-  text-wrap:wrap;
 }
 .error-box , .success-box{
   display: none;
   position: fixed;
   top: 40%;
   left: 40%;
+}
+#passw, #confirm-password{
+  width: 40%;
+  border: 1px solid black;
+  margin-left: 1%;
+  margin-bottom: 2%;
+}
+.reset-submit{
+	width: fit-content;
+}
+.reset-query{
+	display: flex;
+	width: 50%;
+	justify-content: space-between;
 }

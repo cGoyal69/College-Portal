@@ -1,12 +1,42 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Header } from "../components/Header";
 import { Navbar } from "../components/NavBar";
-import { studentInfo } from "../components/Login";
+import { studentToken } from "../components/Login";
 
-
+let studentInfo = "";
 export default class Profile extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          isLoading: true,
+          error: null,
+        };
+      }
+      
+      async componentDidMount() {
+        console.log(studentToken)
+        await axios
+          .post("http://localhost:6969/user-details", {studentToken} )
+          .then((res) => {
+            //console.log(res.data[0]);
+            if (res.data === "Error") {
+              console.log("Error fetching data");
+              this.setState({ error: "An error occurred while fetching data" });
+            } else {
+              studentInfo = res.data[0];
+              this.setState({ isLoading: false });
+            }
+          })
+          .catch((e) => {
+            console.error("Error:", e);
+            this.setState({ error: "An error occurred" });
+          });
+      }
+
     render()
     {
+        const { isLoading, error } = this.state;
         const genprofiledata = [
             {
                 value: 'Name',
@@ -20,7 +50,7 @@ export default class Profile extends Component {
                 readonly: true,
                 cName: 'bo rollform',
                 type: 'number',
-                answer: studentInfo['Registration Number']
+                answer: studentInfo.roll
             },
             {
                 value: 'Branch',
@@ -150,8 +180,14 @@ export default class Profile extends Component {
                 type: 'text', 
                 answer: studentInfo['Physical Disablities']
             },
-            
         ]
+        if (isLoading) {
+            return <div>Loading profile information...</div>;
+          }
+      
+          if (error) {
+            return <div>Error: {error}</div>;
+          }
         return(
             <div className="bache">
                 <Header theme="headerch"/>
