@@ -1,5 +1,6 @@
 .error-box {
   display: none;
+  position: inherit;
   top: 40%;
   left: 20%;
   background-color: peachpuff;
