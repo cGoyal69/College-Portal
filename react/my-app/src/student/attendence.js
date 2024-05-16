@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Header } from "../components/Header";
 import { Navbar } from "../components/NavBar";
-import { studentT } from "../components/Login";
+import { studentToken } from "../components/Login";
 
 
 export default class Attendence extends Component {
@@ -16,22 +16,22 @@ export default class Attendence extends Component {
       }
     
       async componentDidMount() {
-        console.log(studentT); // Log studentT for debugging
+        console.log(studentToken); // Log studentToken for debugging
     
         try {
-          const response = await axios.post("http://localhost:6969/grade", { studentT });
+          const response = await axios.post("http://localhost:6969/attendence", { studentToken });
           console.log(response.data); // Log entire response for debugging
     
           if (response.data === "Error") {
             console.log("Error fetching data from API");
-            this.setState({ error: "An error occurred while fetching grades" });
+            this.setState({ error: "An error occurred while fetching attendences" });
           } else {
             console.log(response.data);
             this.setState({ studentInfo: response.data, isLoading: false });
           }
         } catch (error) {
           console.error("Error:", error);
-          this.setState({ error: "An error occurred fetching grades" }); // More specific message
+          this.setState({ error: "An error occurred fetching attendences" }); // More specific message
         }
       }
     
@@ -39,7 +39,7 @@ export default class Attendence extends Component {
         const { isLoading, error, studentInfo } = this.state;
     
         if (isLoading) {
-          return <div>Loading grades...</div>;
+          return <div>Loading attendence...</div>;
         }
     
         if (error) {
@@ -60,14 +60,17 @@ export default class Attendence extends Component {
                                     <th>Total Class</th>
                                     <th>Class Attended</th>
                                     <th>Percentage</th>
+                                    <th>Semester</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {studentInfo.map((grade) => (
-                                    <tr key={grade.roll}>
-                                    <td>{grade.ccode}</td>
-                                    <td>{grade.totalclass}</td>
-                                    <td>{grade.attend}</td>
+                                {studentInfo.map((attendence) => (
+                                    <tr key={attendence.roll}>
+                                    <td>{attendence.ccode}</td>
+                                    <td>{attendence.total_class}</td>
+                                    <td>{attendence.class_attend}</td>
+                                    <td>{attendence.percentage}</td>
+                                    <td>{attendence.sem}</td>
                                     </tr>
                                 ))}
                                 </tbody>

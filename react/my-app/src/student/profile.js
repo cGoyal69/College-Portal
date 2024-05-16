@@ -19,7 +19,6 @@ export default class Profile extends Component {
         await axios
           .post("http://localhost:6969/user-details", {studentToken} )
           .then((res) => {
-            //console.log(res.data[0]);
             if (res.data === "Error") {
               console.log("Error fetching data");
               this.setState({ error: "An error occurred while fetching data" });
@@ -57,21 +56,14 @@ export default class Profile extends Component {
                 readonly: true,
                 cName: 'bo branchform',
                 type: 'text',
-                answer: studentInfo['Branch']
-            },
-            {
-                value: 'Semester',
-                readonly: true,
-                cName: 'bo semform',
-                type: 'text', 
-                answer: studentInfo.Semester
+                answer: studentInfo.dept_id
             },
             {
                 value: 'Year of Graduation',
                 readonly: true,
                 cName: 'bo nameform',
-                type: 'number', 
-                answer: studentInfo['Year of Graduation']
+                type: 'text', 
+                answer: studentInfo.grad_year
             },
             {
                 value: 'Contact Number',

@@ -32,8 +32,7 @@ export const Login = () => {
         console.log(res.data);
         studentT = res.data;
         studentToken = res.data.token;
-        studentCourses = res.data.courses;
-        console.log(studentCourses);
+        console.log(studentToken);
         if(res.data === "Error")
         {
           console.log("Hi");

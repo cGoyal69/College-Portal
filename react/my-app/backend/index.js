@@ -36,16 +36,7 @@ app.post('/login',async (req,res) => {
 			if (isMatch) {
                 let token = jwt.sign({user} , JWT_SECRET, { expiresIn: "30m" });
                 console.log("Login successful, generated token:", token);
-
-                const sql1 = "select ccode from courses";
-                con.query(sql1 , async (err,courses) => {
-                    if(err) return res.json("Error");
-                    else
-                    {
-                        return res.json({ token, courses });
-                    }
-                })
-                 // Send token in the response
+                return res.json({ token });      // Send token in the response
 			}
 			else
             {
@@ -56,12 +47,13 @@ app.post('/login',async (req,res) => {
     console.log(course)
     
 });
+
 app.post('/user-details', async (req, res) => {
-    const tok = req.body;
-    console.log(tok);
-    console.log("Userdetails Received request for user:", tok.studentToken);
+    const token = req.body;
+    console.log(token.studentToken);
+    console.log("Userdetails Received request for user:", token.studentToken);
     try {
-            const User = jwt.verify(tok.studentToken, JWT_SECRET, (err,res)=>{
+            const User = jwt.verify(token.studentToken, JWT_SECRET, (err,res)=>{
                 if(err)
                 {
                     return "token expired";
@@ -91,7 +83,76 @@ app.post('/user-details', async (req, res) => {
     }
 });
 
-//const coursesList = ["CS1012_23", "CS2015_22", "EC2032_22", "CS2043_22"];
+app.post('/courses', async (req, res) => {
+  const token = req.body;
+    console.log(token.studentToken);
+    console.log("Userdetails Received request for user:", token.studentToken);
+    try {
+            const User = jwt.verify(token.studentToken, JWT_SECRET, (err,res)=>{
+                if(err)
+                {
+                  return "token expired";
+              }
+              return res;
+          });
+          console.log(User)
+          if (User==="token expired") {
+              return res.send({status: "error" , data : "token expired"});
+          }
+          else
+          {
+              const sql = "select * from courses where dept_id in (select dept_id from student where roll = '"+User.user+"') ";
+              con.query(sql , async (err,result) => {
+                  if(err) return res.json("Error");
+                      else
+                      {
+                          console.log(result);
+                          return res.json(result);
+                      }  
+              })
+          }
+      }
+  catch (error) {
+      console.error("Error retrieving student data:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.post('/attendence', async (req, res) => {
+  const token = req.body;
+  console.log(token.studentToken);
+  console.log("Userdetails Received request for user:", token.studentToken);
+  try {
+          const User = jwt.verify(token.studentToken, JWT_SECRET, (err,res)=>{
+              if(err)
+              {
+                  return "token expired";
+              }
+              return res;
+          });
+          console.log(User)
+          if (User==="token expired") {
+              return res.send({status: "error" , data : "token expired"});
+          }
+          else
+          {
+              const sql = "select * from attendence where ccode in (select ccode from courses where dept_id in (select dept_id from student where roll = '"+User.user+"') and roll = '"+User.user+"') ";
+              con.query(sql , async (err,result) => {
+                  if(err) return res.json("Error");
+                      else
+                      {
+                          console.log(result);
+                          return res.json(result);
+                      }  
+              })
+          }
+      }
+  catch (error) {
+      console.error("Error retrieving student data:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 app.post('/grade', async (req, res) => {
     const tok = req.body;
     console.log('Grade Token Receive : ' ,tok);
@@ -184,13 +245,13 @@ app.post('/grade', async (req, res) => {
       console.error("Error retrieving student data:", error);
       res.status(500).json({ error: "Internal Server Error" });
     }
-  });
-  
+});
 
 const PORT = 6969;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
 app.post("/reset-password", async (req,res) => {
     let h = '';
     const{ tok, password } = req.body;
@@ -208,7 +269,7 @@ app.post("/reset-password", async (req,res) => {
             }
             else
             {
-                const sql = "select * from student where username = '"+User.user+"' ";
+                const sql = "select * from student where roll = '"+User.user+"' ";
                 con.query(sql , async (err,result) => {
                     if(err) return res.json("Error");
                         else
@@ -217,7 +278,7 @@ app.post("/reset-password", async (req,res) => {
                             const encryptyedPassword = await bcrypt.hash(password,10);
                             console.log(encryptyedPassword);
                                         //console.log(result);
-                                        const sql = "update student set password = '"+encryptyedPassword+"' where username = '"+User.user+"' ";
+                                        const sql = "update student set password = '"+encryptyedPassword+"' where roll = '"+User.user+"' ";
                                         console.log(User.user);
                                         con.query(sql , async (err,result1) => {
                                             if(err) return res.json("Error");
@@ -237,6 +298,7 @@ app.post("/reset-password", async (req,res) => {
             res.status(500).json({ error: "Internal Server Error" });
         }
 });
+
 app.post("/reset-pass", async (req,res) => {
     let h = '';
     const{ user, password } = req.body;
@@ -244,7 +306,7 @@ app.post("/reset-pass", async (req,res) => {
                 const encryptyedPassword = await bcrypt.hash(password,10);
                             console.log(encryptyedPassword);
                                         //console.log(result);
-                                        const sql = "update student set password = '"+encryptyedPassword+"' where username = '"+user+"' ";
+                                        const sql = "update student set password = '"+encryptyedPassword+"' where roll = '"+user+"' ";
                                         console.log(user);
                                         con.query(sql , async (err,result1) => {
                                             if(err) return res.json("Error");
